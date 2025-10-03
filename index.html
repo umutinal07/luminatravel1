@@ -5,43 +5,183 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lumina Travel</title>
   <style>
+    /* 🔹 Renk Paleti */
+    :root {
+      --dark-bg: #0a0f1c;   /* Arka plan */
+      --pink: #ff2d75;
+      --purple: #a445c9;
+      --blue: #2d9fff;
+      --white: #ffffff;
+      --gray: #b0b8c5;
+    }
+
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #0a0a0f;
-      color: #fff;
+      font-family: 'Poppins', Arial, sans-serif;
+      background: var(--dark-bg);
+      color: var(--white);
+    }
+
+    header {
       text-align: center;
+      padding: 40px 20px;
     }
 
     header img {
-      display: block;
-      width: 80%;       /* Ekranın %80’ini kaplar */
-      max-width: 900px; /* Masaüstünde en fazla 900px */
-      height: auto;
-      margin: 40px auto;
+      height: 100px;
+      margin-bottom: 20px;
     }
 
-    h1 {
-      font-size: 2.5rem;
+    header h1 {
+      font-size: 42px;
+      margin: 0;
+      font-weight: bold;
+      letter-spacing: 2px;
+    }
+
+    header p {
+      font-size: 18px;
+      color: var(--gray);
+    }
+
+    nav {
+      background: linear-gradient(90deg, var(--pink), var(--purple), var(--blue));
+      text-align: center;
+      padding: 12px 0;
+    }
+
+    nav a {
+      color: var(--white);
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: 600;
+      font-size: 16px;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 100px 20px;
+      background: linear-gradient(135deg, rgba(255,45,117,0.15), rgba(164,69,201,0.15), rgba(45,159,255,0.15));
+      border-radius: 15px;
+      margin: 30px auto;
+      max-width: 1000px;
+    }
+
+    .hero h2 {
+      font-size: 36px;
+      margin-bottom: 15px;
+      background: linear-gradient(90deg, var(--pink), var(--purple), var(--blue));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    section {
+      max-width: 1000px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+
+    section h2 {
+      font-size: 28px;
+      margin-bottom: 20px;
+      color: var(--white);
+      border-left: 4px solid var(--pink);
+      padding-left: 10px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    ul li {
+      background: rgba(255,255,255,0.05);
+      margin: 10px 0;
+      padding: 12px 15px;
+      border-radius: 8px;
+      transition: background 0.3s;
+    }
+
+    ul li:hover {
+      background: rgba(255,255,255,0.15);
+    }
+
+    footer {
+      background: #000000;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: var(--gray);
+      margin-top: 40px;
+    }
+
+    /* Buton (Opsiyonel) */
+    .btn {
+      display: inline-block;
       margin-top: 20px;
+      padding: 12px 25px;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 30px;
+      background: linear-gradient(90deg, var(--pink), var(--purple), var(--blue));
+      color: var(--white);
+      text-decoration: none;
+      transition: 0.3s;
     }
 
-    p {
-      font-size: 1.2rem;
-      color: #aaa;
+    .btn:hover {
+      opacity: 0.85;
     }
   </style>
 </head>
 <body>
+
   <header>
-    <!-- BURAYA YENİ LOGONUN ADINI KOY -->
+    <!-- Logonu buraya ekle -->
     <img src="logo.png" alt="Lumina Travel Logo">
+    <h1>LUMINA TRAVEL</h1>
+    <p>Light Up Your Journey</p>
   </header>
 
-  <main>
-    <h1>Hoş Geldiniz</h1>
-    <p>LIGHT UP YOUR JOURNEY</p>
-  </main>
+  <nav>
+    <a href="#hakkimizda">Hakkımızda</a>
+    <a href="#hizmetler">Hizmetler</a>
+    <a href="#iletisim">İletişim</a>
+  </nav>
+
+  <section class="hero">
+    <h2>Yeni Maceralara Yola Çık!</h2>
+    <p>Hayalinizdeki yolculuğu ışıkla buluşturuyoruz.</p>
+    <a href="#iletisim" class="btn">Rezervasyon Yap</a>
+  </section>
+
+  <section id="hakkimizda">
+    <h2>Hakkımızda</h2>
+    <p>Lumina Travel, yolculuklarınızı sadece bir seyahat değil, unutulmaz bir deneyime dönüştürmek için kuruldu.</p>
+  </section>
+
+  <section id="hizmetler">
+    <h2>Hizmetlerimiz</h2>
+    <ul>
+      <li>Özel Tur Paketleri</li>
+      <li>Uçak ve Otel Rezervasyonu</li>
+      <li>VIP Transfer ve Rehberlik</li>
+    </ul>
+  </section>
+
+  <section id="iletisim">
+    <h2>İletişim</h2>
+    <p>Email: info@luminatravel.com</p>
+    <p>Telefon: +90 555 555 55 55</p>
+  </section>
+
+  <footer>
+    © 2025 Lumina Travel. Tüm hakları saklıdır.
+  </footer>
+
 </body>
 </html>
-
