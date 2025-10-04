@@ -4,18 +4,80 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Lumina Travel</title>
-  <link rel="stylesheet" href="style.css" />
 
-  <!-- 🔽 Logo boyutunu büyütmek için eklenen özel stil -->
   <style>
+    :root {
+      --dark-bg: #0a0f1c;
+      --pink: #ff2d75;
+      --purple: #a445c9;
+      --blue: #2d9fff;
+      --white: #ffffff;
+      --gray: #b0b8c5;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', Arial, sans-serif;
+      background: var(--dark-bg);
+      color: var(--white);
+    }
+
+    header {
+      text-align: center;
+      padding: 40px 20px;
+    }
+
     header img {
-      height: 500px;  /* Logo yüksekliği: 500px, istersen değiştir */
-      max-width: 100%; /* Ekranı taşmaması için koruma */
+      height: 500px;
+      max-width: 100%;
       display: block;
-      margin: 0 auto; /* Ortalamak için */
+      margin: 0 auto;
+    }
+
+    nav {
+      background: linear-gradient(90deg, var(--pink), var(--purple), var(--blue));
+      text-align: center;
+      padding: 12px 0;
+    }
+
+    nav a {
+      color: var(--white);
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: 600;
+      font-size: 16px;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 100px 20px;
+      background: linear-gradient(135deg, rgba(255,45,117,0.15), rgba(164,69,201,0.15), rgba(45,159,255,0.15));
+      border-radius: 15px;
+      margin: 30px auto;
+      max-width: 1000px;
+    }
+
+    .hero h2 {
+      font-size: 36px;
+      margin-bottom: 15px;
+      background: linear-gradient(90deg, var(--pink), var(--purple), var(--blue));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    footer {
+      background: #000000;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: var(--gray);
+      margin-top: 40px;
     }
   </style>
-  <!-- 🔼 Buraya kadar eklendi -->
 </head>
 
 <body>
