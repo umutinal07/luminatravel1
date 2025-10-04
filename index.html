@@ -7,7 +7,6 @@
 
   <style>
     :root {
-      --dark-bg: #0a0f1c;
       --pink: #ff2d75;
       --purple: #a445c9;
       --blue: #2d9fff;
@@ -18,52 +17,92 @@
     body {
       margin: 0;
       font-family: 'Poppins', Arial, sans-serif;
-      background: var(--dark-bg);
+      background: radial-gradient(circle at 30% 20%, #0b1224, #060913 80%);
       color: var(--white);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* 🔹 Aurora animasyonu */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(ellipse at 30% 40%, rgba(164,69,201,0.25), transparent 60%),
+                  radial-gradient(ellipse at 70% 60%, rgba(45,159,255,0.25), transparent 60%),
+                  radial-gradient(ellipse at 50% 80%, rgba(255,45,117,0.25), transparent 70%);
+      animation: auroraMove 15s ease-in-out infinite alternate;
+      z-index: 0;
+    }
+
+    @keyframes auroraMove {
+      0% { transform: translate(0%, 0%) scale(1); }
+      50% { transform: translate(-10%, -5%) scale(1.05); }
+      100% { transform: translate(10%, 5%) scale(1); }
+    }
+
+    header, nav, section, footer {
+      position: relative;
+      z-index: 1;
     }
 
     header {
       text-align: center;
-      padding: 40px 20px;
+      padding: 80px 20px 40px;
     }
 
     header img {
       width: 100%;
-      max-width: 450px; /* masaüstünde maksimum genişlik */
-      height: auto; /* oran korunsun */
+      max-width: 400px;
+      height: auto;
       display: block;
       margin: 0 auto;
+      background: transparent;
+      filter: drop-shadow(0 0 35px rgba(164, 69, 201, 0.4));
     }
 
     nav {
       background: linear-gradient(90deg, var(--pink), var(--purple), var(--blue));
       text-align: center;
       padding: 12px 0;
+      border-radius: 40px;
+      width: fit-content;
+      margin: 0 auto;
+      box-shadow: 0 0 25px rgba(164,69,201,0.4);
     }
 
     nav a {
       color: var(--white);
       text-decoration: none;
-      margin: 0 15px;
+      margin: 0 18px;
       font-weight: 600;
       font-size: 16px;
+      transition: opacity 0.3s;
     }
 
     nav a:hover {
-      text-decoration: underline;
+      opacity: 0.8;
     }
 
     .hero {
       text-align: center;
-      padding: 80px 20px;
-      background: linear-gradient(135deg, rgba(255,45,117,0.15), rgba(164,69,201,0.15), rgba(45,159,255,0.15));
-      border-radius: 15px;
-      margin: 30px auto;
+      padding: 100px 20px;
+      background: rgba(255,255,255,0.02);
+      border-radius: 20px;
+      margin: 60px auto;
       max-width: 1000px;
+      box-shadow: 0 0 40px rgba(45,159,255,0.08);
+      backdrop-filter: blur(10px);
     }
 
     .hero h2 {
-      font-size: 36px;
+      font-size: 38px;
       margin-bottom: 15px;
       background: linear-gradient(90deg, var(--pink), var(--purple), var(--blue));
       -webkit-background-clip: text;
@@ -71,18 +110,17 @@
     }
 
     footer {
-      background: #000000;
       text-align: center;
       padding: 20px;
       font-size: 14px;
       color: var(--gray);
-      margin-top: 40px;
+      margin-top: auto;
     }
 
-    /* 🔹 Mobil cihaz uyumluluğu */
+    /* 🔹 Responsive uyum */
     @media (max-width: 768px) {
       header img {
-        max-width: 300px; /* tablet */
+        max-width: 280px;
       }
       .hero h2 {
         font-size: 28px;
@@ -91,11 +129,14 @@
 
     @media (max-width: 480px) {
       header img {
-        max-width: 220px; /* telefon */
+        max-width: 220px;
+      }
+      nav {
+        border-radius: 0;
+        width: 100%;
       }
       nav a {
-        display: inline-block;
-        margin: 8px 10px;
+        margin: 0 10px;
         font-size: 14px;
       }
       .hero h2 {
