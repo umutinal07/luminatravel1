@@ -1,142 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Lumina Travel</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- 🔽 Logo boyutunu büyütmek için eklenen özel stil -->
   <style>
-  
     header img {
-    height: 400px;
-    max-width: 100%;
-  }
-</style>
-
-    :root {
-      --dark-bg: #0a0f1c;
-      --pink: #ff2d75;
-      --purple: #a445c9;
-      --blue: #2d9fff;
-      --white: #ffffff;
-      --gray: #b0b8c5;
-    }
-
-    body {
-      margin: 0;
-      font-family: 'Poppins', Arial, sans-serif;
-      background: var(--dark-bg);
-      color: var(--white);
-    }
-
-    header {
-      text-align: center;
-      padding: 30px 20px 10px;
-    }
-
-    header img {
-      height: 200px;
-      max-width: 100%;
-    }
-
-    nav {
-      background: linear-gradient(90deg, var(--pink), var(--purple), var(--blue));
-      text-align: center;
-      padding: 12px 0;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-
-    nav a {
-      color: var(--white);
-      text-decoration: none;
-      margin: 0 20px;
-      font-weight: 600;
-      font-size: 16px;
-      transition: 0.3s;
-    }
-
-    nav a:hover {
-      text-decoration: underline;
-      opacity: 0.9;
-    }
-
-    .hero {
-      text-align: center;
-      padding: 100px 20px;
-      background: linear-gradient(135deg, rgba(255,45,117,0.15), rgba(164,69,201,0.15), rgba(45,159,255,0.15));
-      border-radius: 15px;
-      margin: 30px auto;
-      max-width: 1000px;
-    }
-
-    .hero h2 {
-      font-size: 36px;
-      background: linear-gradient(90deg, var(--pink), var(--purple), var(--blue));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 15px;
-    }
-
-    .btn {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 12px 25px;
-      font-size: 16px;
-      font-weight: bold;
-      border-radius: 30px;
-      background: linear-gradient(90deg, var(--pink), var(--purple), var(--blue));
-      color: var(--white);
-      text-decoration: none;
-      transition: 0.3s;
-    }
-
-    .btn:hover {
-      opacity: 0.85;
-    }
-
-    footer {
-      background: #000;
-      text-align: center;
-      padding: 20px;
-      font-size: 14px;
-      color: var(--gray);
-      margin-top: 40px;
-    }
-
-    footer a {
-      color: var(--pink);
-      text-decoration: none;
+      height: 500px;  /* Logo yüksekliği: 500px, istersen değiştir */
+      max-width: 100%; /* Ekranı taşmaması için koruma */
+      display: block;
+      margin: 0 auto; /* Ortalamak için */
     }
   </style>
+  <!-- 🔼 Buraya kadar eklendi -->
 </head>
+
 <body>
 
-<header>
-  <img src="logo.png" alt="Lumina Travel Logo">
-</header>
+  <header>
+    <img src="logo.png" alt="Lumina Travel Logo">
+  </header>
 
-<nav>
-  <a href="index.html">Home</a>
-  <a href="about.html">About us</a>
-  <a href="services.html">Our services</a>
-  <a href="contact.html">Contact</a>
-</nav>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About us</a>
+    <a href="services.html">Our services</a>
+    <a href="contact.html">Contact</a>
+  </nav>
 
-<section class="hero">
-  <h2>We are coming to serve your next journey soon!</h2>
-  <p>We bring your dream journey to light.</p>
-  <a href="contact.html" class="btn">Reservation</a>
-</section>
+  <section class="hero">
+    <h2>We are coming to serve your next journey soon!</h2>
+    <p>We bring your dream journey to light.</p>
+  </section>
 
-<footer>
-  © 2025 Lumina Travel. All Rights Reserved.
-  <br>
-  <a href="https://www.instagram.com/luminatravel1" target="_blank">Instagram</a>
-</footer>
+  <footer>
+    © 2025 Lumina Travel. All Rights Reserved.
+  </footer>
 
 </body>
-
 </html>
-
