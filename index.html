@@ -28,8 +28,9 @@
     }
 
     header img {
-      height: 500px;
-      max-width: 100%;
+      width: 100%;
+      max-width: 450px; /* masaüstünde maksimum genişlik */
+      height: auto; /* oran korunsun */
       display: block;
       margin: 0 auto;
     }
@@ -54,7 +55,7 @@
 
     .hero {
       text-align: center;
-      padding: 100px 20px;
+      padding: 80px 20px;
       background: linear-gradient(135deg, rgba(255,45,117,0.15), rgba(164,69,201,0.15), rgba(45,159,255,0.15));
       border-radius: 15px;
       margin: 30px auto;
@@ -77,6 +78,30 @@
       color: var(--gray);
       margin-top: 40px;
     }
+
+    /* 🔹 Mobil cihaz uyumluluğu */
+    @media (max-width: 768px) {
+      header img {
+        max-width: 300px; /* tablet */
+      }
+      .hero h2 {
+        font-size: 28px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header img {
+        max-width: 220px; /* telefon */
+      }
+      nav a {
+        display: inline-block;
+        margin: 8px 10px;
+        font-size: 14px;
+      }
+      .hero h2 {
+        font-size: 24px;
+      }
+    }
   </style>
 </head>
 
@@ -95,7 +120,7 @@
 
   <section class="hero">
     <h2>Your next adventure starts here!</h2>
-     <p>We are coming to serve you soon.<p>
+    <p>We are coming to serve you soon.</p>
   </section>
 
   <footer>
@@ -103,7 +128,4 @@
   </footer>
 
 </body>
-
 </html>
-
-
