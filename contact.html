@@ -50,6 +50,24 @@
       text-decoration: none;
     }
 
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .whatsapp-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #25D366;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .whatsapp-link img {
+      width: 20px;
+      height: 20px;
+    }
+
     footer {
       background: #000;
       text-align: center;
@@ -71,7 +89,15 @@
 <section>
   <h2>Contact</h2>
   <p>📧 info@luminatravel.net</p>
-  <p>📞 +62 821 2849 6254</p>
+  
+  <!-- WhatsApp linkli telefon numarası -->
+  <p>
+    <a class="whatsapp-link" href="https://wa.me/6282128496254" target="_blank">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Logo">
+      +62 821 2849 6254
+    </a>
+  </p>
+
   <p>Follow us on Instagram: <a href="https://www.instagram.com/luminatravel1" target="_blank">@luminatravel1</a></p>
 </section>
 
@@ -80,6 +106,4 @@
 </footer>
 
 </body>
-
 </html>
-
