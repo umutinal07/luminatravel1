@@ -36,7 +36,7 @@
     .hero {
       position: relative;
       height: 400px;
-      background: url("TURRESIM.jpg") center/cover no-repeat;
+      background: url("banner.jpg") center/cover no-repeat;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -171,12 +171,62 @@
       transform: scale(1.05);
     }
 
+    /* 🔸 Alt fiyat bilgi butonu */
+    .contact-cta {
+      text-align: center;
+      margin-top: 50px;
+      margin-bottom: 40px;
+    }
+
+    .contact-cta a {
+      color: #ff2d75;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 20px;
+      border: 2px solid #ff2d75;
+      padding: 12px 25px;
+      border-radius: 10px;
+      display: inline-block;
+      position: relative;
+      transition: all 0.3s ease;
+      overflow: hidden;
+    }
+
+    .contact-cta a::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(90deg, #ff2d75, #a445c9, #2d9fff);
+      transform: rotate(45deg);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      z-index: 0;
+    }
+
+    .contact-cta a:hover::before {
+      opacity: 0.15;
+    }
+
+    .contact-cta a span {
+      position: relative;
+      z-index: 1;
+    }
+
+    .contact-cta a:hover {
+      background: #ff2d75;
+      color: white;
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(255,45,117,0.5);
+    }
+
     footer {
       background: #000;
       text-align: center;
       padding: 20px;
       color: #b0b8c5;
-      margin-top: 60px;
     }
 
     @keyframes fadeIn {
@@ -258,6 +308,11 @@
   <a href="packages.html" style="color:#ff2d75;text-decoration:none;font-weight:600;display:block;margin-top:40px;">← Back to Tour Packages</a>
 </section>
 
+<!-- 🔸 Fiyat Bilgisi CTA -->
+<div class="contact-cta">
+  <a href="contact.html"><span>✉️ FOR PRICE INFO PLEASE CONTACT WITH US</span></a>
+</div>
+
 <footer>
   © 2025 Lumina Travel. All Rights Reserved.
 </footer>
@@ -278,5 +333,3 @@
 
 </body>
 </html>
-
-
