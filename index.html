@@ -40,20 +40,21 @@
       background: transparent;
     }
 
+    /* 🔹 Menü barı diğer sayfalardaki gibi tam genişlikte yapıldı */
     nav {
       background: linear-gradient(90deg, var(--pink), var(--purple), var(--blue));
       text-align: center;
       padding: 12px 0;
-      border-radius: 40px;
-      width: fit-content;
-      margin: 0 auto;
+      width: 100%;
+      margin: 0;
       box-shadow: 0 0 20px rgba(164,69,201,0.4);
+      border-radius: 0;
     }
 
     nav a {
       color: var(--white);
       text-decoration: none;
-      margin: 0 18px;
+      margin: 0 20px;
       font-weight: 600;
       font-size: 16px;
       transition: opacity 0.3s;
@@ -103,10 +104,6 @@
       header img {
         max-width: 220px;
       }
-      nav {
-        border-radius: 0;
-        width: 100%;
-      }
       nav a {
         margin: 0 10px;
         font-size: 14px;
@@ -128,6 +125,7 @@
     <a href="index.html">Home</a>
     <a href="about.html">About us</a>
     <a href="services.html">Our services</a>
+    <a href="packages.html">Tour Packages</a>
     <a href="contact.html">Contact</a>
   </nav>
 
