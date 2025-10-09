@@ -46,7 +46,7 @@
     }
 
     a {
-      color: #ff2d75;
+      color: #ffffff; /* Tüm linkler beyaz */
       text-decoration: none;
     }
 
@@ -58,9 +58,13 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      color: #25D366;
+      color: #ffffff;
       font-weight: 600;
       text-decoration: none;
+    }
+
+    .whatsapp-link:hover {
+      text-decoration: underline;
     }
 
     .whatsapp-link img {
@@ -88,8 +92,12 @@
 
 <section>
   <h2>Contact</h2>
-  <p>📧 info@luminatravel.net</p>
-  
+
+  <!-- Email linkli -->
+  <p>
+    📧 <a href="mailto:info@luminatravel.net">info@luminatravel.net</a>
+  </p>
+
   <!-- WhatsApp linkli telefon numarası -->
   <p>
     <a class="whatsapp-link" href="https://wa.me/6282128496254" target="_blank">
@@ -98,7 +106,11 @@
     </a>
   </p>
 
-  <p>Follow us on Instagram: <a href="https://www.instagram.com/luminatravel1" target="_blank">@luminatravel1</a></p>
+  <!-- Instagram linkli -->
+  <p>
+    📸 Follow us on Instagram:
+    <a href="https://www.instagram.com/luminatravel1" target="_blank">@luminatravel1</a>
+  </p>
 </section>
 
 <footer>
@@ -107,3 +119,5 @@
 
 </body>
 </html>
+
+
