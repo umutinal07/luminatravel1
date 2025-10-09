@@ -32,25 +32,81 @@
     }
 
     section {
-      max-width: 900px;
+      max-width: 1000px;
       margin: auto;
       padding: 60px 20px;
       text-align: center;
     }
 
     h2 {
-      font-size: 32px;
+      font-size: 34px;
       background: linear-gradient(90deg, #ff2d75, #a445c9, #2d9fff);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      margin-bottom: 20px;
     }
 
     p {
       font-size: 18px;
       color: #d0d6e0;
       line-height: 1.6;
-      max-width: 700px;
+      max-width: 750px;
       margin: 20px auto;
+    }
+
+    .package-links {
+      margin-top: 50px;
+    }
+
+    .package-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 25px;
+      margin-top: 25px;
+    }
+
+    .package-card {
+      background: #121729;
+      border-radius: 14px;
+      padding: 30px 20px;
+      width: 220px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid #1f2640;
+    }
+
+    .package-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 20px rgba(255, 45, 117, 0.3);
+    }
+
+    .package-card h3 {
+      font-size: 20px;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+
+    .package-card p {
+      font-size: 14px;
+      color: #b5bdd0;
+      margin-bottom: 20px;
+    }
+
+    .package-card a {
+      display: inline-block;
+      background: linear-gradient(90deg, #ff2d75, #a445c9, #2d9fff);
+      color: white;
+      text-decoration: none;
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 14px;
+      transition: opacity 0.2s ease;
+    }
+
+    .package-card a:hover {
+      opacity: 0.85;
     }
 
     footer {
@@ -72,26 +128,27 @@
   <a href="index.html">Home</a>
   <a href="about.html">About us</a>
   <a href="services.html">Our services</a>
+  <a href="tour-packages.html">Tour Packages</a>
   <a href="contact.html">Contact</a>
 </nav>
 
 <section>
   <h2>Tour Packages</h2>
-  <p>Explore the world with Lumina Travel's exclusive tour packages. 
+  <p>Explore the world with Lumina Travel's exclusive tour packages.  
+  We offer personalized travel experiences across destinations like Turkey, Morocco, Europe, and Japan — from cultural discoveries to relaxing beach escapes.  
+  Each journey is designed to light up your adventure and fit your style, comfort, and budget.</p>
 
-We offer exclusive tour packages to destinations like Turkey, Morocco, Japan, and Bali. 
-
-Discover the ancient wonders of Turkey, the vibrant colors of Morocco, the timeless culture of Japan, or the exotic beauty of Bali. 
-
-From sun-soaked island adventures to profound cultural escapes, we offer custom experiences designed to match your dream—and tailored perfectly to your style and budget.</p>
   <p>✨ Private Tours • Family Holidays • Group Adventures • Honeymoon Getaways</p>
-  <a href="services.html" style="color:#ff2d75;text-decoration:none;font-weight:600;">← Back to Services</a>
-</section>
 
-<footer>
-  © 2025 Lumina Travel. All Rights Reserved.
-</footer>
+  <div class="package-links">
+    <h3 style="color:#ff2d75;">Choose Your Destination:</h3>
+    <div class="package-grid">
+      <div class="package-card">
+        <h3>🇹🇷 Turkey Packages</h3>
+        <p>From Istanbul’s charm to Cappadocia’s magic and Antalya’s beaches.</p>
+        <a href="turkey-packages.html">View Details</a>
+      </div>
 
-</body>
-</html>
-
+      <div class="package-card">
+        <h3>🇲🇦 Morocco Packages</h3>
+        <
