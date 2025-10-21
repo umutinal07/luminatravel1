@@ -159,4 +159,62 @@
   <!-- 1) 7D6N TOKYO OSAKA TOUR Autumn Winter 2025.pdf -->
   <div id="tab1" class="pdf-card active">
     <h3>📄 7D6N TOKYO OSAKA TOUR — Autumn/Winter 2025</h3>
-    <p class="desc">Discove
+    <p class="desc">Discover Japan’s capital and Kansai highlights in one balanced itinerary.</p>
+    <iframe src="7D6N TOKYO OSAKA TOUR Autumn Winter 2025.pdf"></iframe>
+    <a class="download-btn" href="7D6N TOKYO OSAKA TOUR Autumn Winter 2025.pdf" download>⬇️ Download PDF</a>
+  </div>
+
+  <!-- 2) 6D5N Hokkaido Autumn Winter 2025.pdf -->
+  <div id="tab2" class="pdf-card">
+    <h3>📄 6D5N Hokkaido — Autumn/Winter 2025</h3>
+    <p class="desc">Scenic Hokkaido landscapes, seasonal cuisine and relaxing onsen spots.</p>
+    <iframe src="6D5N Hokkaido Autumn Winter 2025.pdf"></iframe>
+    <a class="download-btn" href="6D5N Hokkaido Autumn Winter 2025.pdf" download>⬇️ Download PDF</a>
+  </div>
+
+  <!-- 3) 6D5N GOLDEN ROUTE FULLPACKAGE TOUR Autumn Winter 2025.pdf -->
+  <div id="tab3" class="pdf-card">
+    <h3>📄 6D5N GOLDEN ROUTE FULLPACKAGE TOUR — Autumn/Winter 2025</h3>
+    <p class="desc">Tokyo–Mt. Fuji–Kyoto–Osaka: the essential highlights in 6 days.</p>
+    <iframe src="6D5N GOLDEN ROUTE FULLPACKAGE TOUR Autumn Winter 2025.pdf"></iframe>
+    <a class="download-btn" href="6D5N GOLDEN ROUTE FULLPACKAGE TOUR Autumn Winter 2025.pdf" download>⬇️ Download PDF</a>
+  </div>
+
+  <!-- 4) 5D4N TOKYO DISNEYLAND TOUR Autumn Winter 2025.pdf -->
+  <div id="tab4" class="pdf-card">
+    <h3>📄 5D4N TOKYO DISNEYLAND TOUR — Autumn/Winter 2025</h3>
+    <p class="desc">Family-friendly adventure with dedicated days for Disney magic in Tokyo.</p>
+    <iframe src="5D4N TOKYO DISNEYLAND TOUR Autumn Winter 2025.pdf"></iframe>
+    <a class="download-btn" href="5D4N TOKYO DISNEYLAND TOUR Autumn Winter 2025.pdf" download>⬇️ Download PDF</a>
+  </div>
+
+  <!-- 5) 5D4N Hokkaido Autumn Winter 2025.pdf -->
+  <div id="tab5" class="pdf-card">
+    <h3>📄 5D4N Hokkaido — Autumn/Winter 2025</h3>
+    <p class="desc">Compact Hokkaido exploration perfect for a shorter seasonal getaway.</p>
+    <iframe src="5D4N Hokkaido Autumn Winter 2025.pdf"></iframe>
+    <a class="download-btn" href="5D4N Hokkaido Autumn Winter 2025.pdf" download>⬇️ Download PDF</a>
+  </div>
+
+  <a class="back-link" href="packages.html">← Back to Tour Packages</a>
+</section>
+
+<footer>
+  © 2025 Lumina Travel. All Rights Reserved.
+</footer>
+
+<script>
+  const buttons = document.querySelectorAll(".tab-link");
+  const tabs = document.querySelectorAll(".pdf-card");
+  buttons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      buttons.forEach(b => b.classList.remove("active"));
+      tabs.forEach(t => t.classList.remove("active"));
+      btn.classList.add("active");
+      document.getElementById(btn.dataset.tab).classList.add("active");
+    });
+  });
+</script>
+
+</body>
+</html>
