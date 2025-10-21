@@ -24,14 +24,14 @@
       min-height: 100vh;
     }
 
-    /* ✅ Video kırpmasız + küçültülmüş */
+    /* ✅ Video kırpmasız + gömülü görünüm */
     .video-banner {
       position: relative;
       width: 100%;
       aspect-ratio: 16 / 9;
-      background: #000;
+      background: #0a0f1c; /* Sayfa rengiyle aynı */
       overflow: hidden;
-      max-height: 400px; /* 👈 masaüstüde yükseklik sınırı */
+      max-height: 400px;
       margin: 0 auto;
     }
 
@@ -43,11 +43,12 @@
       display: block;
     }
 
+    /* Kenarlara yumuşak geçiş efekti */
     .video-banner::after {
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(rgba(10,15,28,0.4), rgba(10,15,28,0.15));
+      background: radial-gradient(ellipse at center, rgba(10,15,28,0) 60%, rgba(10,15,28,1) 100%);
       pointer-events: none;
     }
 
