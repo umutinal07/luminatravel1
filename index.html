@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Lumina Travel</title>
-
   <style>
     :root {
       --dark-bg: radial-gradient(circle at 30% 20%, #0b1224, #060913 80%);
@@ -25,25 +24,30 @@
       min-height: 100vh;
     }
 
-    /* ✅ Video Banner */
+    /* ✅ Video kırpmasız gösterim */
     .video-banner {
       position: relative;
       width: 100%;
-      height: 400px;
+      /* Varsayılan oran (16:9). Sayfa açıldığında kırpmasız görünür;
+         JS ile metadata gelince gerçek orana güncelleyeceğiz. */
+      aspect-ratio: 16 / 9;
+      background: #000; /* letterbox alanları için */
       overflow: hidden;
     }
-
     .video-banner video {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain; /* 🔑 kırpmasız */
+      object-position: center center;
+      display: block;
     }
-
+    /* Üstte hafif koyuluk (istersen kaldır) */
     .video-banner::after {
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(rgba(10,15,28,0.7), rgba(10,15,28,0.3));
+      background: linear-gradient(rgba(10,15,28,0.4), rgba(10,15,28,0.15));
+      pointer-events: none;
     }
 
     nav {
@@ -57,7 +61,6 @@
       position: relative;
       z-index: 10;
     }
-
     nav a {
       color: var(--white);
       text-decoration: none;
@@ -66,10 +69,7 @@
       font-size: 16px;
       transition: opacity 0.3s;
     }
-
-    nav a:hover {
-      opacity: 0.8;
-    }
+    nav a:hover { opacity: 0.8; }
 
     .hero {
       text-align: center;
@@ -80,7 +80,6 @@
       max-width: 1000px;
       box-shadow: 0 0 40px rgba(45,159,255,0.08);
     }
-
     .hero h2 {
       font-size: 38px;
       margin-bottom: 20px;
@@ -88,7 +87,6 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
-
     .hero a {
       display: inline-block;
       color: var(--pink);
@@ -103,7 +101,6 @@
       overflow: hidden;
       margin-top: 10px;
     }
-
     .hero a::before {
       content: "";
       position: absolute;
@@ -117,16 +114,8 @@
       transition: opacity 0.4s ease;
       z-index: 0;
     }
-
-    .hero a:hover::before {
-      opacity: 0.15;
-    }
-
-    .hero a span {
-      position: relative;
-      z-index: 1;
-    }
-
+    .hero a:hover::before { opacity: 0.15; }
+    .hero a span { position: relative; z-index: 1; }
     .hero a:hover {
       background: var(--pink);
       color: var(--white);
@@ -143,10 +132,9 @@
     }
 
     @media (max-width: 768px) {
-      .video-banner { height: 280px; }
+      /* aspect-ratio sayesinde otomatik küçülür */
       .hero h2 { font-size: 28px; }
     }
-
     @media (max-width: 480px) {
       nav a { margin: 0 10px; font-size: 14px; }
       .hero h2 { font-size: 24px; }
@@ -154,12 +142,11 @@
     }
   </style>
 </head>
-
 <body>
 
-  <!-- ✅ Video Banner Alanı -->
-  <div class="video-banner">
-    <video autoplay muted loop playsinline>
+  <!-- 🎥 Video Banner -->
+  <div class="video-banner" id="vb">
+    <video id="heroVideo" autoplay muted loop playsinline preload="metadata" poster="banner-poster.jpg">
       <source src="banner-video.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
@@ -183,5 +170,15 @@
     © 2025 Lumina Travel. All Rights Reserved.
   </footer>
 
+  <!-- 🔧 Videonun gerçek en/boy oranını al ve container'a uygula (tam kırpmasız) -->
+  <script>
+    const v = document.getElementById('heroVideo');
+    const vb = document.getElementById('vb');
+    v.addEventListener('loadedmetadata', () => {
+      if (v.videoWidth && v.videoHeight) {
+        vb.style.aspectRatio = (v.videoWidth / v.videoHeight).toString();
+      }
+    });
+  </script>
 </body>
 </html>
