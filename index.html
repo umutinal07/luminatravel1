@@ -24,24 +24,25 @@
       min-height: 100vh;
     }
 
-    /* ✅ Video kırpmasız gösterim */
+    /* ✅ Video kırpmasız + küçültülmüş */
     .video-banner {
       position: relative;
       width: 100%;
-      /* Varsayılan oran (16:9). Sayfa açıldığında kırpmasız görünür;
-         JS ile metadata gelince gerçek orana güncelleyeceğiz. */
       aspect-ratio: 16 / 9;
-      background: #000; /* letterbox alanları için */
+      background: #000;
       overflow: hidden;
+      max-height: 400px; /* 👈 masaüstüde yükseklik sınırı */
+      margin: 0 auto;
     }
+
     .video-banner video {
       width: 100%;
       height: 100%;
-      object-fit: contain; /* 🔑 kırpmasız */
+      object-fit: contain; /* kırpma yok */
       object-position: center center;
       display: block;
     }
-    /* Üstte hafif koyuluk (istersen kaldır) */
+
     .video-banner::after {
       content: "";
       position: absolute;
@@ -61,6 +62,7 @@
       position: relative;
       z-index: 10;
     }
+
     nav a {
       color: var(--white);
       text-decoration: none;
@@ -69,6 +71,7 @@
       font-size: 16px;
       transition: opacity 0.3s;
     }
+
     nav a:hover { opacity: 0.8; }
 
     .hero {
@@ -80,6 +83,7 @@
       max-width: 1000px;
       box-shadow: 0 0 40px rgba(45,159,255,0.08);
     }
+
     .hero h2 {
       font-size: 38px;
       margin-bottom: 20px;
@@ -87,6 +91,7 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
+
     .hero a {
       display: inline-block;
       color: var(--pink);
@@ -101,6 +106,7 @@
       overflow: hidden;
       margin-top: 10px;
     }
+
     .hero a::before {
       content: "";
       position: absolute;
@@ -114,6 +120,7 @@
       transition: opacity 0.4s ease;
       z-index: 0;
     }
+
     .hero a:hover::before { opacity: 0.15; }
     .hero a span { position: relative; z-index: 1; }
     .hero a:hover {
@@ -131,11 +138,14 @@
       margin-top: auto;
     }
 
+    /* 📱 Mobilde daha küçük video */
     @media (max-width: 768px) {
-      /* aspect-ratio sayesinde otomatik küçülür */
+      .video-banner { max-height: 300px; }
       .hero h2 { font-size: 28px; }
     }
+
     @media (max-width: 480px) {
+      .video-banner { max-height: 220px; }
       nav a { margin: 0 10px; font-size: 14px; }
       .hero h2 { font-size: 24px; }
       .hero a { font-size: 16px; padding: 10px 18px; }
@@ -170,7 +180,7 @@
     © 2025 Lumina Travel. All Rights Reserved.
   </footer>
 
-  <!-- 🔧 Videonun gerçek en/boy oranını al ve container'a uygula (tam kırpmasız) -->
+  <!-- 🔧 Videonun doğal oranını otomatik al -->
   <script>
     const v = document.getElementById('heroVideo');
     const vb = document.getElementById('vb');
@@ -180,5 +190,6 @@
       }
     });
   </script>
+
 </body>
 </html>
