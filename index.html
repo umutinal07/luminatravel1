@@ -24,31 +24,18 @@
       min-height: 100vh;
     }
 
-    /* ✅ Video kırpmasız + gömülü görünüm */
-    .video-banner {
+    /* ✅ ÜST STATİK BANNER (video yerine görsel) */
+    .top-banner {
       position: relative;
       width: 100%;
-      aspect-ratio: 16 / 9;
-      background: #0a0f1c; /* Sayfa rengiyle aynı */
-      overflow: hidden;
-      max-height: 400px;
-      margin: 0 auto;
+      height: 360px;                 /* istersen 320-420px arası oynat */
+      background: url("home-banner.jpg") center/cover no-repeat;
     }
-
-    .video-banner video {
-      width: 100%;
-      height: 100%;
-      object-fit: contain; /* kırpma yok */
-      object-position: center center;
-      display: block;
-    }
-
-    /* Kenarlara yumuşak geçiş efekti */
-    .video-banner::after {
+    .top-banner::after {
       content: "";
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse at center, rgba(10,15,28,0) 60%, rgba(10,15,28,1) 100%);
+      background: linear-gradient(rgba(10,15,28,0.65), rgba(10,15,28,0.35));
       pointer-events: none;
     }
 
@@ -72,13 +59,13 @@
       font-size: 16px;
       transition: opacity 0.3s;
     }
-
     nav a:hover { opacity: 0.8; }
 
+    /* HERO BÖLÜMÜ (artık videoyu içeriyor) */
     .hero {
       text-align: center;
-      padding: 100px 20px;
-      background: linear-gradient(135deg, rgba(255,45,117,0.1), rgba(164,69,201,0.1), rgba(45,159,255,0.1));
+      padding: 40px 20px 100px;
+      background: linear-gradient(135deg, rgba(255,45,117,0.08), rgba(164,69,201,0.08), rgba(45,159,255,0.08));
       border-radius: 20px;
       margin: 50px auto;
       max-width: 1000px;
@@ -86,49 +73,39 @@
     }
 
     .hero h2 {
-      font-size: 38px;
-      margin-bottom: 20px;
+      font-size: 34px;
+      margin: 0 0 18px;
       background: linear-gradient(90deg, var(--pink), var(--purple), var(--blue));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
-    .hero a {
-      display: inline-block;
-      color: var(--pink);
-      font-weight: 600;
-      font-size: 20px;
-      text-decoration: none;
-      border: 2px solid var(--pink);
-      padding: 12px 25px;
-      border-radius: 10px;
-      transition: all 0.3s ease;
+    /* 🎥 HERO İÇİ VİDEO (kırpmasız, gömülü görünüm) */
+    .hero-video {
       position: relative;
+      width: 100%;
+      max-width: 960px;
+      margin: 0 auto;
+      aspect-ratio: 16 / 9;
+      background: #0a0f1c;                    /* sayfa rengiyle aynı */
+      border-radius: 16px;
       overflow: hidden;
-      margin-top: 10px;
+      box-shadow: 0 0 24px rgba(45,159,255,0.12);
     }
-
-    .hero a::before {
+    .hero-video video {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;                     /* kırpmasız */
+      object-position: center center;
+      display: block;
+      background: #0a0f1c;
+    }
+    .hero-video::after {
       content: "";
       position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: linear-gradient(90deg, var(--pink), var(--purple), var(--blue));
-      transform: rotate(45deg);
-      opacity: 0;
-      transition: opacity 0.4s ease;
-      z-index: 0;
-    }
-
-    .hero a:hover::before { opacity: 0.15; }
-    .hero a span { position: relative; z-index: 1; }
-    .hero a:hover {
-      background: var(--pink);
-      color: var(--white);
-      transform: scale(1.05);
-      box-shadow: 0 0 20px rgba(255,45,117,0.5);
+      inset: 0;
+      background: radial-gradient(ellipse at center, rgba(10,15,28,0) 60%, rgba(10,15,28,0.9) 120%);
+      pointer-events: none;
     }
 
     footer {
@@ -139,29 +116,23 @@
       margin-top: auto;
     }
 
-    /* 📱 Mobilde daha küçük video */
+    /* 📱 Responsive */
     @media (max-width: 768px) {
-      .video-banner { max-height: 300px; }
-      .hero h2 { font-size: 28px; }
+      .top-banner { height: 280px; }
+      .hero { padding: 32px 16px 80px; margin: 36px auto; }
+      .hero h2 { font-size: 26px; }
     }
-
     @media (max-width: 480px) {
-      .video-banner { max-height: 220px; }
       nav a { margin: 0 10px; font-size: 14px; }
-      .hero h2 { font-size: 24px; }
-      .hero a { font-size: 16px; padding: 10px 18px; }
+      .top-banner { height: 220px; }
+      .hero h2 { font-size: 22px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- 🎥 Video Banner -->
-  <div class="video-banner" id="vb">
-    <video id="heroVideo" autoplay muted loop playsinline preload="metadata" poster="banner-poster.jpg">
-      <source src="banner-video.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-  </div>
+  <!-- 🖼️ ÜST STATİK BANNER -->
+  <div class="top-banner"></div>
 
   <nav>
     <a href="index.html">Home</a>
@@ -171,23 +142,29 @@
     <a href="contact.html">Contact</a>
   </nav>
 
+  <!-- 🎯 HERO: Metin + Video (eski butonlar kaldırıldı) -->
   <section class="hero">
     <h2>Your next adventure starts here!</h2>
-    <a href="turkey-packages.html"><span>Our Turkey Packages are ready, come and check!</span></a>
-    <a href="japan-packages.html"><span>Our Japan Packages are ready, come and check!</span></a>
+
+    <div class="hero-video" id="hv">
+      <video id="hvSrc" autoplay muted loop playsinline preload="metadata" poster="banner-poster.jpg">
+        <source src="hero-video.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
   </section>
 
   <footer>
     © 2025 Lumina Travel. All Rights Reserved.
   </footer>
 
-  <!-- 🔧 Videonun doğal oranını otomatik al -->
+  <!-- 🔧 Videonun doğal oranını al ve container'a uygula (opsiyonel, farklı video oranları için) -->
   <script>
-    const v = document.getElementById('heroVideo');
-    const vb = document.getElementById('vb');
+    const v = document.getElementById('hvSrc');
+    const wrap = document.getElementById('hv');
     v.addEventListener('loadedmetadata', () => {
       if (v.videoWidth && v.videoHeight) {
-        vb.style.aspectRatio = (v.videoWidth / v.videoHeight).toString();
+        wrap.style.aspectRatio = (v.videoWidth / v.videoHeight).toString();
       }
     });
   </script>
