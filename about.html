@@ -6,6 +6,7 @@
   <title>About Us - Lumina Travel</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
+    * { box-sizing: border-box; }
     body {
       background: #0a0f1c;
       color: white;
@@ -13,22 +14,30 @@
       margin: 0;
     }
 
+    /* 🌐 Responsive Navigation */
     nav {
       background: linear-gradient(90deg, #ff2d75, #a445c9, #2d9fff);
-      text-align: center;
-      padding: 12px 0;
+      padding: 12px 10px;
+      display: flex;
+      flex-wrap: wrap;        /* Mobilde alta geçsin */
+      gap: 10px 14px;         /* Boşluklar */
+      justify-content: center;
     }
 
     nav a {
       color: white;
       text-decoration: none;
-      margin: 0 20px;
       font-weight: 600;
       font-size: 16px;
+      padding: 6px 10px;
+      border-radius: 8px;
+      white-space: nowrap;
+      transition: opacity 0.2s;
     }
 
     nav a:hover {
       text-decoration: underline;
+      opacity: 0.9;
     }
 
     section {
@@ -43,6 +52,14 @@
       background: linear-gradient(90deg, #ff2d75, #a445c9, #2d9fff);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 18px;
+      line-height: 1.6;
+      color: #d0d6e0;
+      margin-bottom: 20px;
     }
 
     footer {
@@ -55,6 +72,27 @@
     footer a {
       color: #ff2d75;
       text-decoration: none;
+    }
+
+    /* 📱 Mobil ekranlar için */
+    @media (max-width: 600px) {
+      nav {
+        gap: 8px 10px;
+        padding: 10px 8px;
+      }
+      nav a {
+        font-size: 14px;
+        padding: 6px 8px;
+      }
+      section {
+        padding: 40px 16px;
+      }
+      h2 {
+        font-size: 26px;
+      }
+      p {
+        font-size: 16px;
+      }
     }
   </style>
 </head>
@@ -70,9 +108,7 @@
 
 <section>
   <h2>About Us</h2>
-  <p>At Lumina Travel, we turn your travel dreams into unforgettable experiences.</p> 
-
-
+  <p>At Lumina Travel, we turn your travel dreams into unforgettable experiences.</p>
   <p>We are passionate about crafting unique, comfortable, and inspiring journeys around the world, ensuring every trip becomes a story worth remembering.</p>
 </section>
 
@@ -81,6 +117,7 @@
 </footer>
 
 </body>
-
 </html>
+
+
 
