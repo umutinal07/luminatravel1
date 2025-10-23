@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Our Services - Lumina Travel</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tour Packages - Lumina Travel</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    body { background:#0a0f1c; color:#fff; font-family:'Poppins',sans-serif; margin:0; }
+    body { background:#0a0f1c; color:white; font-family:'Poppins',sans-serif; margin:0; }
 
-    /* Hero Banner */
+    /* ✅ Hero Banner */
     .hero {
       position: relative;
       height: 380px;
@@ -18,11 +18,11 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(rgba(10,15,28,.6), rgba(10,15,28,.4));
+      background: linear-gradient(rgba(10,15,28,0.6), rgba(10,15,28,0.4));
       z-index: 1;
     }
 
-    /* Navbar */
+    /* ✅ NAV */
     nav {
       background: linear-gradient(90deg, #ff2d75, #a445c9, #2d9fff);
       text-align: center;
@@ -31,7 +31,7 @@
       z-index: 2;
     }
     nav a {
-      color: #fff;
+      color: white;
       text-decoration: none;
       margin: 0 20px;
       font-weight: 600;
@@ -39,32 +39,70 @@
     }
     nav a:hover { text-decoration: underline; }
 
-    /* Content */
+    /* ✅ MAIN CONTENT */
     section {
-      max-width: 900px;
+      max-width: 1000px;
       margin: auto;
       padding: 60px 20px;
       text-align: center;
     }
     h2 {
-      font-size: 32px;
-      margin-bottom: 20px;
-      background: linear-gradient(90deg,#ff2d75,#a445c9,#2d9fff);
+      font-size: 34px;
+      background: linear-gradient(90deg, #ff2d75, #a445c9, #2d9fff);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      margin-bottom: 20px;
     }
-    ul { list-style: none; padding: 0; }
-    li {
-      background: rgba(255,255,255,0.05);
-      margin: 10px auto;
-      padding: 12px 20px;
+    p {
+      font-size: 18px;
+      color: #d0d6e0;
+      line-height: 1.6;
+      max-width: 750px;
+      margin: 20px auto;
+    }
+
+    .package-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 25px;
+      margin-top: 25px;
+    }
+    .package-card {
+      background: #121729;
+      border-radius: 14px;
+      padding: 30px 20px;
+      width: 220px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid #1f2640;
+    }
+    .package-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 20px rgba(255, 45, 117, 0.3);
+    }
+    .package-card h3 {
+      font-size: 20px;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+    .package-card p {
+      font-size: 14px;
+      color: #b5bdd0;
+      margin-bottom: 20px;
+    }
+    .package-card a {
+      display: inline-block;
+      background: linear-gradient(90deg, #ff2d75, #a445c9, #2d9fff);
+      color: white;
+      text-decoration: none;
+      padding: 10px 18px;
       border-radius: 8px;
-      max-width: 400px;
-      transition: background .3s;
+      font-weight: 600;
+      font-size: 14px;
+      transition: opacity 0.2s ease;
     }
-    li:hover { background: rgba(255,255,255,0.15); }
-    li a { color: #fff; text-decoration: none; display: block; }
-    li a:hover { color: #ff2d75; }
+    .package-card a:hover { opacity: 0.8; }
 
     footer {
       background: #000;
@@ -73,21 +111,19 @@
       color: #b0b8c5;
     }
 
-    /* Responsive */
-    @media (max-width:768px) {
+    /* 📱 Mobil uyum */
+    @media (max-width: 768px) {
       .hero { height: 300px; }
-      nav a { font-size:14px; margin:0 12px; }
-      section { padding:40px 16px; }
-      h2 { font-size:28px; }
+      nav a { font-size: 14px; margin: 0 10px; }
     }
   </style>
 </head>
 <body>
 
-<!-- Hero Banner -->
+<!-- ✅ HERO BANNER -->
 <div class="hero"></div>
 
-<!-- Navbar -->
+<!-- ✅ NAV -->
 <nav>
   <a href="index.html">Home</a>
   <a href="about.html">About us</a>
@@ -96,17 +132,47 @@
   <a href="contact.html">Contact</a>
 </nav>
 
-<!-- Content -->
+<!-- ✅ CONTENT -->
 <section>
-  <h2>Our Services</h2>
-  <ul>
-    <li><a href="packages.html">Tour Packages</a></li>
-    <li><a href="reservations.html">Hotel and Flight Reservations</a></li>
-    <li><a href="vip.html">VIP Transfers and Guide Service</a></li>
-  </ul>
+  <h2>Tour Packages</h2>
+  <p>Explore the world with Lumina Travel's exclusive tour packages.  
+  Discover Turkey, Morocco, Europe, Japan and Dubai — each offering unique culture, adventure, and relaxation experiences tailored just for you.</p>
+
+  <div class="package-grid">
+    <div class="package-card">
+      <h3>🇹🇷 Turkey Packages</h3>
+      <p>From Istanbul’s history to Antalya’s beaches.</p>
+      <a href="turkey-packages.html">View Details</a>
+    </div>
+
+    <div class="package-card">
+      <h3>🇲🇦 Morocco Packages</h3>
+      <p>Marrakech, Sahara desert, and blue Chefchaouen.</p>
+      <a href="morocco-packages.html">View Details</a>
+    </div>
+
+    <div class="package-card">
+      <h3>🇪🇺 Europe Packages</h3>
+      <p>Romantic Paris, stunning Italy, and Swiss Alps.</p>
+      <a href="europe-packages.html">View Details</a>
+    </div>
+
+    <div class="package-card">
+      <h3>🇯🇵 Japan Packages</h3>
+      <p>Tokyo skyline, Kyoto temples, and cherry blossoms.</p>
+      <a href="japan-packages.html">View Details</a>
+    </div>
+
+    <div class="package-card">
+      <h3>🇦🇪 Dubai Packages</h3>
+      <p>Luxury, desert adventures, and iconic skyscrapers.</p>
+      <a href="dubai-packages.html">View Details</a>
+    </div>
+  </div>
+
+  <a href="services.html" style="color:#ff2d75;text-decoration:none;font-weight:600;display:block;margin-top:60px;">← Back to Services</a>
 </section>
 
-<!-- Footer -->
 <footer>
   © 2025 Lumina Travel. All Rights Reserved.
 </footer>
@@ -114,6 +180,6 @@
 </body>
 </html>
 
-</body>
 </html>
+
 
