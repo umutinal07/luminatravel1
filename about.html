@@ -8,55 +8,82 @@
   <style>
     body { background:#0a0f1c; color:#fff; font-family:'Poppins',sans-serif; margin:0; }
 
-    /* Navbar (diğer sayfalarla aynı) */
-    nav{
-      background:linear-gradient(90deg,#ff2d75,#a445c9,#2d9fff);
-      text-align:center; padding:12px 0;
+    /* ✅ Hero Banner */
+    .hero {
+      position: relative;
+      height: 380px;
+      background: url("about-banner.jpg") center/cover no-repeat;
     }
-    nav a{ color:#fff; text-decoration:none; margin:0 20px; font-weight:600; font-size:16px; }
-    nav a:hover{ text-decoration:underline; }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(rgba(10,15,28,0.6), rgba(10,15,28,0.4));
+      z-index: 1;
+    }
 
-    /* Hero Banner (diğer sayfalarla birebir uyumlu) */
-    .hero{
-      position:relative; height:380px;
-      background:url("home-banner.jpg") center/cover no-repeat;
-      display:flex; align-items:center; justify-content:center; text-align:center; color:#fff;
+    /* ✅ Navbar (Bannerın ALTINA) */
+    nav {
+      background: linear-gradient(90deg, #ff2d75, #a445c9, #2d9fff);
+      text-align: center;
+      padding: 12px 0;
+      position: relative;
+      z-index: 2;
     }
-    .hero::before{
-      content:""; position:absolute; inset:0;
-      background:linear-gradient(rgba(10,15,28,.8), rgba(10,15,28,.55)); z-index:1;
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 20px;
+      font-weight: 600;
+      font-size: 16px;
     }
-    .hero-content{ position:relative; z-index:2; max-width:900px; padding:0 20px; }
-    .hero h1{
-      font-size:40px; margin:0 0 10px;
-      background:linear-gradient(90deg,#ff2d75,#a445c9,#2d9fff);
-      -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+    nav a:hover {
+      text-decoration: underline;
     }
-    .hero p{ color:#d0d6e0; font-size:18px; margin:0; }
 
-    /* İçerik */
-    section{ max-width:900px; margin:auto; padding:60px 20px; text-align:center; }
-    h2{
-      font-size:32px; margin-bottom:18px;
-      background:linear-gradient(90deg,#ff2d75,#a445c9,#2d9fff);
-      -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+    /* ✅ İçerik */
+    section {
+      max-width: 900px;
+      margin: auto;
+      padding: 60px 20px;
+      text-align: center;
     }
-    p{ font-size:18px; color:#d0d6e0; line-height:1.6; }
 
-    footer{ background:#000; text-align:center; padding:20px; color:#b0b8c5; }
+    h2 {
+      font-size: 32px;
+      background: linear-gradient(90deg, #ff2d75, #a445c9, #2d9fff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 20px;
+    }
 
-    /* Mobil uyum */
-    @media (max-width:768px){
-      .hero{ height:300px; }
-      .hero h1{ font-size:30px; }
-      section{ padding:40px 16px; }
-      h2{ font-size:28px; }
-      nav a{ font-size:14px; margin:0 12px; }
+    p {
+      font-size: 18px;
+      color: #d0d6e0;
+      line-height: 1.6;
+    }
+
+    footer {
+      background: #000;
+      text-align: center;
+      padding: 20px;
+      color: #b0b8c5;
+    }
+
+    /* 📱 Mobil uyum */
+    @media (max-width: 768px) {
+      .hero { height: 300px; }
+      h2 { font-size: 28px; }
+      nav a { font-size: 14px; margin: 0 12px; }
     }
   </style>
 </head>
 <body>
 
+<!-- HERO BANNER -->
+<div class="hero"></div>
+
+<!-- MENU -->
 <nav>
   <a href="index.html">Home</a>
   <a href="about.html">About us</a>
@@ -65,22 +92,17 @@
   <a href="contact.html">Contact</a>
 </nav>
 
-<!-- HERO -->
-<div class="hero">
-  <div class="hero-content">
-    
-</div>
-
+<!-- CONTENT -->
 <section>
   <h2>About Us</h2>
   <p>At Lumina Travel, we turn your travel dreams into unforgettable experiences.</p>
   <p>We are passionate about crafting unique, comfortable, and inspiring journeys around the world, ensuring every trip becomes a story worth remembering.</p>
 </section>
 
+<!-- FOOTER -->
 <footer>
   © 2025 Lumina Travel. All Rights Reserved.
 </footer>
 
 </body>
 </html>
-
