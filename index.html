@@ -7,8 +7,7 @@
   <style>
     :root {
       --dark-bg: radial-gradient(circle at 30% 20%, #0b1224, #060913 80%);
-      --pink: #ff2d75; --purple: #a445c9; --blue: #2d9fff;
-      --white: #ffffff; --gray: #b0b8c5;
+      --pink:#ff2d75; --purple:#a445c9; --blue:#2d9fff; --white:#fff; --gray:#b0b8c5;
     }
     *{box-sizing:border-box}
     body{
@@ -17,13 +16,15 @@
       display:flex; flex-direction:column; min-height:100vh;
     }
 
-    /* 🖼️ BANNER — tam genişlik, kırpmasız, yan boşluk yok */
-    .top-banner{ position:relative; width:100%; margin:0; line-height:0; }
+    /* 🖼️ BANNER — yan boşluk yok, kırpma yok, esneterek doldur */
+    .top-banner{
+      position:relative; width:100%; height:360px;  /* istediğin sabit yükseklik */
+      margin:0; overflow:hidden; line-height:0;
+    }
     .top-banner img{
-      display:block;
-      width:100%;      /* ➜ her zaman soldan-sağa tam */
-      height:auto;     /* ➜ oran korunur, kırpma yok */
-      max-width:none;  /* olası global sınırlamaları iptal */
+      display:block; width:100%; height:100%;
+      object-fit: fill;          /* 🔑 Alanı %100 doldur (oran bozulabilir) */
+      object-position:center;
     }
     .top-banner::after{
       content:""; position:absolute; inset:0;
@@ -34,13 +35,14 @@
     nav{
       background:linear-gradient(90deg,var(--pink),var(--purple),var(--blue));
       text-align:center; padding:12px 0; width:100%;
-      margin:0; box-shadow:0 0 20px rgba(164,69,201,.4); z-index:10;
+      margin:0; box-shadow:0 0 20px rgba(164,69,201,.4);
+      position:relative; z-index:10;
     }
     nav a{
       color:var(--white); text-decoration:none; margin:0 20px;
       font-weight:600; font-size:16px; transition:opacity .3s; white-space:nowrap;
     }
-    nav a:hover{ opacity:.8; }
+    nav a:hover{opacity:.8}
 
     .hero{
       text-align:center; padding:40px 20px 100px;
@@ -70,15 +72,10 @@
 
     footer{ background:#000; text-align:center; padding:20px; color:#b0b8c5; margin-top:auto; }
 
-    @media (max-width:768px){
-      nav a{ margin:0 10px; font-size:14px; }
-      .hero{ padding:32px 16px 80px; margin:36px auto; }
-      .hero h2{ font-size:26px; }
-    }
-    @media (max-width:480px){
-      nav a{ margin:0 8px; font-size:13px; }
-      .hero h2{ font-size:22px; }
-    }
+    /* 📱 Yüksekliği breakpoint'lere göre ayarla */
+    @media (max-width: 1024px){ .top-banner{height:320px;} }
+    @media (max-width: 768px){  .top-banner{height:280px;} nav a{margin:0 10px; font-size:14px;} .hero{padding:32px 16px 80px; margin:36px auto;} .hero h2{font-size:26px;} }
+    @media (max-width: 480px){  .top-banner{height:220px;} nav a{margin:0 8px; font-size:13px;} .hero h2{font-size:22px;} }
   </style>
 </head>
 <body>
