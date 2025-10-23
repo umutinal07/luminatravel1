@@ -1,93 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Our Services - Lumina Travel</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    body {
-      background: #0a0f1c;
-      color: white;
-      font-family: 'Poppins', sans-serif;
-      margin: 0;
+    body { background:#0a0f1c; color:#fff; font-family:'Poppins',sans-serif; margin:0; }
+
+    /* HERO BANNER (About Us ile aynı yapı) */
+    .hero{
+      position:relative; height:380px;
+      background:url("home-banner.jpg") center/cover no-repeat;
+    }
+    .hero::before{
+      content:""; position:absolute; inset:0;
+      background:linear-gradient(rgba(10,15,28,.6), rgba(10,15,28,.4)); z-index:1;
     }
 
-    nav {
-      background: linear-gradient(90deg, #ff2d75, #a445c9, #2d9fff);
-      text-align: center;
-      padding: 12px 0;
+    /* NAV (bannerın ALTINDA) */
+    nav{
+      background:linear-gradient(90deg,#ff2d75,#a445c9,#2d9fff);
+      text-align:center; padding:12px 0; position:relative; z-index:2;
+    }
+    nav a{
+      color:#fff; text-decoration:none; margin:0 20px; font-weight:600; font-size:16px;
+    }
+    nav a:hover{ text-decoration:underline; }
+
+    /* CONTENT */
+    section{ max-width:900px; margin:auto; padding:60px 20px; text-align:center; }
+    h2{
+      font-size:32px; margin-bottom:20px;
+      background:linear-gradient(90deg,#ff2d75,#a445c9,#2d9fff);
+      -webkit-background-clip:text; -webkit-text-fill-color:transparent;
     }
 
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin: 0 20px;
-      font-weight: 600;
-      font-size: 16px;
+    ul{ list-style:none; padding:0; }
+    li{
+      background:rgba(255,255,255,0.05);
+      margin:10px auto; padding:12px 20px; border-radius:8px; max-width:400px;
+      transition:background .3s;
     }
+    li:hover{ background:rgba(255,255,255,0.15); }
+    li a{ color:#fff; text-decoration:none; display:block; }
+    li a:hover{ color:#ff2d75; }
 
-    nav a:hover {
-      text-decoration: underline;
-    }
+    footer{ background:#000; text-align:center; padding:20px; color:#b0b8c5; }
+    footer a{ color:#ff2d75; text-decoration:none; }
 
-    section {
-      max-width: 900px;
-      margin: auto;
-      padding: 60px 20px;
-      text-align: center;
-    }
-
-    h2 {
-      font-size: 32px;
-      background: linear-gradient(90deg, #ff2d75, #a445c9, #2d9fff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    li {
-      background: rgba(255,255,255,0.05);
-      margin: 10px auto;
-      padding: 12px 20px;
-      border-radius: 8px;
-      max-width: 400px;
-      transition: background 0.3s;
-    }
-
-    li:hover {
-      background: rgba(255,255,255,0.15);
-    }
-
-    li a {
-      color: white;
-      text-decoration: none;
-      display: block;
-    }
-
-    li a:hover {
-      color: #ff2d75;
-    }
-
-    footer {
-      background: #000;
-      text-align: center;
-      padding: 20px;
-      color: #b0b8c5;
-    }
-
-    footer a {
-      color: #ff2d75;
-      text-decoration: none;
+    /* Mobil uyum (About Us ile aynı ölçekler) */
+    @media (max-width:768px){
+      .hero{ height:300px; }
+      nav a{ font-size:14px; margin:0 12px; }
+      section{ padding:40px 16px; }
+      h2{ font-size:28px; }
     }
   </style>
 </head>
 <body>
 
+<!-- HERO BANNER -->
+<div class="hero"></div>
+
+<!-- MENU (bannerın altında) -->
 <nav>
   <a href="index.html">Home</a>
   <a href="about.html">About us</a>
@@ -96,6 +72,7 @@
   <a href="contact.html">Contact</a>
 </nav>
 
+<!-- MAIN CONTENT -->
 <section>
   <h2>Our Services</h2>
   <ul>
@@ -111,4 +88,3 @@
 
 </body>
 </html>
-
