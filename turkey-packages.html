@@ -6,63 +6,56 @@
   <title>Turkey Packages - Lumina Travel</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --pink: #ff2d75;
+      --purple: #a445c9;
+      --blue: #2d9fff;
+      --dark-bg: #0a0f1c;
+    }
+
     body {
-      background: #0a0f1c;
+      background: var(--dark-bg);
       color: white;
       font-family: 'Poppins', sans-serif;
       margin: 0;
     }
 
-    /* 🔹 Navbar */
-    nav {
-      background: linear-gradient(90deg, #ff2d75, #a445c9, #2d9fff);
-      text-align: center;
-      padding: 12px 0;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin: 0 20px;
-      font-weight: 600;
-      font-size: 16px;
-    }
-
-    nav a:hover {
-      text-decoration: underline;
-    }
-
-    /* 🔹 Hero Banner */
+    /* 🖼️ HERO BANNER - Kırpmasız */
     .hero {
       position: relative;
-      height: 400px;
-      background: url("banner.jpg") center/cover no-repeat;
+      width: 100%;
+      background: var(--dark-bg);
+      overflow: hidden;
+    }
+    .hero img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: contain; /* kırpmasız tam görüntü */
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(rgba(10,15,28,0.65), rgba(10,15,28,0.35));
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: absolute;
+      inset: 0;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: center;
-      color: white;
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(rgba(10,15,28,0.8), rgba(10,15,28,0.6));
       z-index: 1;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: 800px;
       padding: 0 20px;
     }
 
     .hero h1 {
       font-size: 42px;
-      background: linear-gradient(90deg, #ff2d75, #a445c9, #2d9fff);
+      background: linear-gradient(90deg, var(--pink), var(--purple), var(--blue));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       margin-bottom: 10px;
@@ -72,9 +65,33 @@
       color: #d0d6e0;
       font-size: 18px;
       line-height: 1.6;
+      max-width: 800px;
     }
 
-    /* 🔹 Sekmeli PDF Alanı */
+    /* 🌐 NAVBAR (banner altına) */
+    nav {
+      background: linear-gradient(90deg, var(--pink), var(--purple), var(--blue));
+      padding: 12px 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 14px;
+      justify-content: center;
+      position: relative;
+      z-index: 2;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 16px;
+      padding: 6px 10px;
+      border-radius: 8px;
+      white-space: nowrap;
+      transition: opacity .2s;
+    }
+    nav a:hover { text-decoration: underline; opacity: .9; }
+
+    /* 📄 MAIN SECTION */
     section {
       max-width: 1000px;
       margin: auto;
@@ -84,7 +101,7 @@
 
     h2 {
       font-size: 32px;
-      background: linear-gradient(90deg, #ff2d75, #a445c9, #2d9fff);
+      background: linear-gradient(90deg, var(--pink), var(--purple), var(--blue));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       margin-bottom: 20px;
@@ -97,6 +114,7 @@
       margin-bottom: 30px;
     }
 
+    /* 📑 Tabs */
     .tab-buttons {
       display: flex;
       justify-content: center;
@@ -106,7 +124,7 @@
     }
 
     .tab-buttons button {
-      background: linear-gradient(90deg, #ff2d75, #a445c9, #2d9fff);
+      background: linear-gradient(90deg, var(--pink), var(--purple), var(--blue));
       border: none;
       color: white;
       font-weight: 600;
@@ -134,13 +152,11 @@
       animation: fadeIn 0.5s ease;
     }
 
-    .pdf-card.active {
-      display: block;
-    }
+    .pdf-card.active { display: block; }
 
     .pdf-card h3 {
       font-size: 24px;
-      background: linear-gradient(90deg, #ff2d75, #a445c9, #2d9fff);
+      background: linear-gradient(90deg, var(--pink), var(--purple), var(--blue));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       margin-bottom: 15px;
@@ -157,7 +173,7 @@
     .download-btn {
       display: inline-block;
       margin-top: 20px;
-      background: linear-gradient(90deg, #ff2d75, #a445c9, #2d9fff);
+      background: linear-gradient(90deg, var(--pink), var(--purple), var(--blue));
       color: white;
       text-decoration: none;
       font-weight: 600;
@@ -167,11 +183,9 @@
       transition: all 0.3s ease;
     }
 
-    .download-btn:hover {
-      transform: scale(1.05);
-    }
+    .download-btn:hover { transform: scale(1.05); }
 
-    /* 🔸 Alt fiyat bilgi butonu */
+    /* 📩 Price Info CTA */
     .contact-cta {
       text-align: center;
       margin-top: 50px;
@@ -179,11 +193,11 @@
     }
 
     .contact-cta a {
-      color: #ff2d75;
+      color: var(--pink);
       text-decoration: none;
       font-weight: 600;
       font-size: 20px;
-      border: 2px solid #ff2d75;
+      border: 2px solid var(--pink);
       padding: 12px 25px;
       border-radius: 10px;
       display: inline-block;
@@ -199,24 +213,17 @@
       left: -50%;
       width: 200%;
       height: 200%;
-      background: linear-gradient(90deg, #ff2d75, #a445c9, #2d9fff);
+      background: linear-gradient(90deg, var(--pink), var(--purple), var(--blue));
       transform: rotate(45deg);
       opacity: 0;
       transition: opacity 0.4s ease;
       z-index: 0;
     }
 
-    .contact-cta a:hover::before {
-      opacity: 0.15;
-    }
-
-    .contact-cta a span {
-      position: relative;
-      z-index: 1;
-    }
-
+    .contact-cta a:hover::before { opacity: 0.15; }
+    .contact-cta a span { position: relative; z-index: 1; }
     .contact-cta a:hover {
-      background: #ff2d75;
+      background: var(--pink);
       color: white;
       transform: scale(1.05);
       box-shadow: 0 0 20px rgba(255,45,117,0.5);
@@ -234,17 +241,29 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
+    /* 📱 Mobil uyum */
     @media (max-width: 768px) {
+      nav { gap: 8px 10px; padding: 10px 8px; }
+      nav a { font-size: 14px; padding: 6px 8px; }
+      .hero h1 { font-size: 30px; }
+      .hero p { font-size: 15px; }
       iframe { height: 450px; }
       .tab-buttons button { padding: 10px 18px; font-size: 14px; }
-      .hero { height: 300px; }
-      .hero h1 { font-size: 30px; }
     }
   </style>
 </head>
 <body>
 
-<!-- 🔹 NAVBAR -->
+<!-- 🖼️ HERO BANNER -->
+<div class="hero">
+  <img src="banner.jpg" alt="Turkey Banner">
+  <div class="hero-content">
+    <h1>Explore Our Istanbul & Turkey Tours</h1>
+    <p>From short escapes to full explorations — discover our handpicked itineraries designed for unforgettable memories across Turkey.</p>
+  </div>
+</div>
+
+<!-- 🌐 NAVBAR -->
 <nav>
   <a href="index.html">Home</a>
   <a href="about.html">About us</a>
@@ -253,15 +272,7 @@
   <a href="contact.html">Contact</a>
 </nav>
 
-<!-- 🔹 HERO SECTION -->
-<div class="hero">
-  <div class="hero-content">
-    <h1>Explore Our Istanbul & Turkey Tours</h1>
-    <p>From short escapes to full explorations — discover our handpicked itineraries designed for unforgettable memories across Turkey.</p>
-  </div>
-</div>
-
-<!-- 🔹 MAIN SECTION -->
+<!-- 📄 MAIN SECTION -->
 <section>
   <h2>Turkey Packages</h2>
   <p>Switch between our tour itineraries below to view details instantly.</p>
@@ -308,11 +319,12 @@
   <a href="packages.html" style="color:#ff2d75;text-decoration:none;font-weight:600;display:block;margin-top:40px;">← Back to Tour Packages</a>
 </section>
 
-<!-- 🔸 Fiyat Bilgisi CTA -->
+<!-- 📩 Fiyat CTA -->
 <div class="contact-cta">
   <a href="contact.html"><span>✉️ FOR PRICE INFO PLEASE CONTACT WITH US</span></a>
 </div>
 
+<!-- 🦶 FOOTER -->
 <footer>
   © 2025 Lumina Travel. All Rights Reserved.
 </footer>
