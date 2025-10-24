@@ -6,48 +6,107 @@
   <title>Morocco Packages - Lumina Travel</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    body { background:#0a0f1c; color:#fff; font-family:'Poppins',sans-serif; margin:0; }
-
-    /* Navbar */
-    nav { background:linear-gradient(90deg,#ff2d75,#a445c9,#2d9fff); text-align:center; padding:12px 0; }
-    nav a { color:#fff; text-decoration:none; margin:0 20px; font-weight:600; font-size:16px; }
-    nav a:hover { text-decoration:underline; }
-
-    /* Hero */
-    .hero{
-      position:relative;
-      height:380px;
-      background:url("morocco-banner.jpg") center/cover no-repeat;
-      display:flex; align-items:center; justify-content:center; text-align:center;
+    :root {
+      --pink: #ff2d75;
+      --purple: #a445c9;
+      --blue: #2d9fff;
+      --dark-bg: #0a0f1c;
     }
-    .hero::before{ content:""; position:absolute; inset:0; background:linear-gradient(rgba(10,15,28,.8), rgba(10,15,28,.55)); z-index:1; }
-    .hero-content{ position:relative; z-index:2; max-width:900px; padding:0 20px; }
-    .hero h1{
-      font-size:40px; margin:0 0 10px;
-      background:linear-gradient(90deg,#ff2d75,#a445c9,#2d9fff);
-      -webkit-background-clip:text; -webkit-text-fill-color:transparent;
-    }
-    .hero p{ color:#d0d6e0; font-size:18px; margin:0; }
 
-    /* Section */
+    body { background: var(--dark-bg); color:#fff; font-family:'Poppins',sans-serif; margin:0; }
+
+    /* 🖼️ HERO BANNER - Kırpmasız */
+    .hero {
+      position: relative;
+      width: 100%;
+      background: var(--dark-bg);
+      overflow: hidden;
+    }
+    .hero img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: contain; /* kırpma yok */
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(rgba(10,15,28,0.65), rgba(10,15,28,0.35));
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      z-index: 1;
+      padding: 0 20px;
+    }
+
+    .hero h1 {
+      font-size: 40px;
+      margin: 0 0 10px;
+      background: linear-gradient(90deg,var(--pink),var(--purple),var(--blue));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero p {
+      color:#d0d6e0;
+      font-size: 18px;
+      margin: 0;
+      max-width: 900px;
+    }
+
+    /* 🌐 NAVBAR (banner altına) */
+    nav {
+      background: linear-gradient(90deg, var(--pink), var(--purple), var(--blue));
+      padding: 12px 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 14px;
+      justify-content: center;
+      position: relative;
+      z-index: 2;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 16px;
+      padding: 6px 10px;
+      border-radius: 8px;
+      white-space: nowrap;
+      transition: opacity .2s;
+    }
+    nav a:hover { text-decoration: underline; opacity: .9; }
+
+    /* 📄 SECTION */
     section{ max-width:1000px; margin:auto; padding:60px 20px; text-align:center; }
     h2{
       font-size:32px; margin-bottom:16px;
-      background:linear-gradient(90deg,#ff2d75,#a445c9,#2d9fff);
+      background:linear-gradient(90deg,var(--pink),var(--purple),var(--blue));
       -webkit-background-clip:text; -webkit-text-fill-color:transparent;
     }
     p.lead{ color:#d0d6e0; font-size:18px; margin-bottom:28px; }
 
-    /* Tabs */
+    /* 📑 Tabs */
     .tab-buttons{ display:flex; justify-content:center; flex-wrap:wrap; gap:12px; margin-bottom:32px; }
     .tab-buttons button{
-      background:linear-gradient(90deg,#ff2d75,#a445c9,#2d9fff);
+      background:linear-gradient(90deg,var(--pink),var(--purple),var(--blue));
       border:none; color:#fff; font-weight:600; border-radius:10px;
       padding:10px 18px; cursor:pointer; font-size:14px; transition:.25s;
     }
-    .tab-buttons button:hover,.tab-buttons button.active{ box-shadow:0 0 18px rgba(164,69,201,.4); transform:translateY(-2px); }
+    .tab-buttons button:hover,.tab-buttons button.active{
+      box-shadow:0 0 18px rgba(164,69,201,.4);
+      transform:translateY(-2px);
+    }
 
-    /* PDF Cards */
+    /* 📄 PDF Cards */
     .pdf-card{
       display:none;
       background:radial-gradient(circle at top left, rgba(255,45,117,.1), rgba(45,159,255,.08));
@@ -58,46 +117,62 @@
     .pdf-card.active{ display:block; }
     .pdf-card h3{
       font-size:22px; margin:0 0 8px;
-      background:linear-gradient(90deg,#ff2d75,#a445c9,#2d9fff);
+      background:linear-gradient(90deg,var(--pink),var(--purple),var(--blue));
       -webkit-background-clip:text; -webkit-text-fill-color:transparent;
     }
     .pdf-card p.desc{ color:#c8cfda; font-size:15px; margin:0 0 18px; }
 
-    iframe{ width:100%; height:600px; border:none; border-radius:14px; box-shadow:0 0 22px rgba(164,69,201,.22); background:#121729; }
+    iframe{
+      width:100%;
+      height:600px;
+      border:none;
+      border-radius:14px;
+      box-shadow:0 0 22px rgba(164,69,201,.22);
+      background:#121729;
+    }
 
     .download-btn{
       display:inline-block; margin-top:18px;
-      background:linear-gradient(90deg,#ff2d75,#a445c9,#2d9fff);
+      background:linear-gradient(90deg,var(--pink),var(--purple),var(--blue));
       color:#fff; text-decoration:none; font-weight:600; padding:11px 24px;
-      border-radius:10px; box-shadow:0 5px 14px rgba(255,45,117,.28); transition:.25s;
+      border-radius:10px; box-shadow:0 5px 14px rgba(255,45,117,.28);
+      transition:.25s;
     }
     .download-btn:hover{ transform:scale(1.05); }
 
-    .back-link{ color:#ff2d75; text-decoration:none; font-weight:600; display:block; margin-top:36px; }
+    .back-link{ color:var(--pink); text-decoration:none; font-weight:600; display:block; margin-top:36px; }
 
     footer{ background:#000; text-align:center; padding:20px; color:#b0b8c5; }
 
     @keyframes fadeIn{from{opacity:0; transform:translateY(12px);} to{opacity:1; transform:none;}}
 
-    /* Contact CTA Button */
+    /* 📩 Contact CTA Button */
     .contact-cta { text-align:center; margin-top:50px; margin-bottom:40px; }
     .contact-cta a{
-      color:#ff2d75; text-decoration:none; font-weight:600; font-size:20px;
-      border:2px solid #ff2d75; padding:12px 25px; border-radius:10px;
+      color:var(--pink); text-decoration:none; font-weight:600; font-size:20px;
+      border:2px solid var(--pink); padding:12px 25px; border-radius:10px;
       display:inline-block; position:relative; transition:all 0.3s ease; overflow:hidden;
     }
     .contact-cta a::before{
       content:""; position:absolute; top:-50%; left:-50%; width:200%; height:200%;
-      background:linear-gradient(90deg,#ff2d75,#a445c9,#2d9fff); transform:rotate(45deg);
+      background:linear-gradient(90deg,var(--pink),var(--purple),var(--blue)); transform:rotate(45deg);
       opacity:0; transition:opacity 0.4s ease; z-index:0;
     }
     .contact-cta a:hover::before{ opacity:0.15; }
     .contact-cta a span{ position:relative; z-index:1; }
-    .contact-cta a:hover{ background:#ff2d75; color:#fff; transform:scale(1.05); box-shadow:0 0 20px rgba(255,45,117,0.5); }
+    .contact-cta a:hover{
+      background:var(--pink);
+      color:#fff;
+      transform:scale(1.05);
+      box-shadow:0 0 20px rgba(255,45,117,0.5);
+    }
 
+    /* 📱 Responsive */
     @media (max-width:768px){
-      .hero{ height:300px; }
+      nav { gap: 8px 10px; padding: 10px 8px; }
+      nav a { font-size: 14px; padding: 6px 8px; }
       .hero h1{ font-size:30px; }
+      .hero p{ font-size:15px; }
       iframe{ height:460px; }
       .tab-buttons button{ font-size:13px; padding:9px 14px; }
     }
@@ -105,7 +180,16 @@
 </head>
 <body>
 
-<!-- NAV -->
+<!-- 🖼️ HERO -->
+<div class="hero">
+  <img src="morocco-banner.jpg" alt="Morocco Banner">
+  <div class="hero-content">
+    <h1>Explore Our Morocco Tours</h1>
+    <p>From Marrakech to the Sahara — curated itineraries across Morocco and beyond.</p>
+  </div>
+</div>
+
+<!-- 🌐 NAVBAR -->
 <nav>
   <a href="index.html">Home</a>
   <a href="about.html">About us</a>
@@ -114,15 +198,7 @@
   <a href="contact.html">Contact</a>
 </nav>
 
-<!-- HERO -->
-<div class="hero">
-  <div class="hero-content">
-    <h1>Explore Our Morocco Tours</h1>
-    <p>From Marrakech to the Sahara — curated itineraries across Morocco and beyond.</p>
-  </div>
-</div>
-
-<!-- MAIN -->
+<!-- 📄 MAIN -->
 <section>
   <h2>Morocco Packages</h2>
   <p class="lead">Choose one of our ready-to-go itineraries and download the PDF instantly.</p>
@@ -152,7 +228,7 @@
   <a class="back-link" href="packages.html">← Back to Tour Packages</a>
 </section>
 
-<!-- CONTACT CTA BUTTON -->
+<!-- 📩 CONTACT CTA BUTTON -->
 <div class="contact-cta">
   <a href="contact.html"><span>✉️ FOR PRICE INFO PLEASE CONTACT WITH US</span></a>
 </div>
@@ -174,4 +250,3 @@
 
 </body>
 </html>
-
