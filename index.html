@@ -2,100 +2,201 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Lumina Travel</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --dark-bg: radial-gradient(circle at 30% 20%, #0b1224, #060913 80%);
-      --pink: #ff2d75; --purple: #a445c9; --blue: #2d9fff;
-      --white: #ffffff; --gray: #b0b8c5;
+    :root{
+      --bg:#0a0f1c;
+      --white:#fff;
+      --pink:#ff2d75; --purple:#a445c9; --blue:#2d9fff;
+      --glass: rgba(255,255,255,0.06);
+      --stroke: rgba(255,255,255,0.12);
+      --shadow: 0 10px 30px rgba(0,0,0,.35), 0 2px 6px rgba(0,0,0,.25);
+      --pill-shadow: 0 6px 18px rgba(164,69,201,.25), 0 2px 8px rgba(45,159,255,.2);
     }
     *{box-sizing:border-box}
     body{
-      margin:0; font-family:'Poppins',Arial,sans-serif;
-      background:var(--dark-bg); color:var(--white);
-      display:flex; flex-direction:column; min-height:100vh;
+      margin:0; font-family:'Poppins',sans-serif; background:var(--bg); color:var(--white);
     }
 
-    /* 🖼️ BANNER — tam genişlik, kırpmasız, yan boşluk yok */
-    .top-banner{ position:relative; width:100%; margin:0; line-height:0; }
+    /* 🖼️ Banner – oran korunur, kırpma yok */
+    .top-banner{
+      position:relative; width:100%; overflow:hidden; background:var(--bg);
+    }
     .top-banner img{
-      display:block;
-      width:100%;      /* ➜ her zaman soldan-sağa tam */
-      height:auto;     /* ➜ oran korunur, kırpma yok */
-      max-width:none;  /* olası global sınırlamaları iptal */
+      width:100%; height:auto; display:block; object-fit:contain; background:var(--bg);
     }
     .top-banner::after{
       content:""; position:absolute; inset:0;
-      background:linear-gradient(rgba(10,15,28,.65), rgba(10,15,28,.35));
+      background:linear-gradient(rgba(10,15,28,.55), rgba(10,15,28,.25));
       pointer-events:none;
     }
 
-    nav{
-      background:linear-gradient(90deg,var(--pink),var(--purple),var(--blue));
-      text-align:center; padding:12px 0; width:100%;
-      margin:0; box-shadow:0 0 20px rgba(164,69,201,.4); z-index:10;
+    /* 🌟 Yeni “Floating Pill” Cam Menü (bannerın ALTINDA) */
+    .nav-wrap{
+      position:sticky; top:0; z-index:50; /* kaydırınca tepeye yapışır */
+      padding:16px 16px 0; /* üstte biraz nefes */
+      background: linear-gradient(to bottom, rgba(10,15,28,.35), rgba(10,15,28,0)); /* yapışınca hoş geçiş */
+      backdrop-filter: none;
     }
-    nav a{
-      color:var(--white); text-decoration:none; margin:0 20px;
-      font-weight:600; font-size:16px; transition:opacity .3s; white-space:nowrap;
+    .pill-nav{
+      max-width:1100px; margin:0 auto;
+      display:flex; align-items:center; justify-content:space-between; gap:14px;
+      background:var(--glass); backdrop-filter: blur(14px);
+      border:1px solid var(--stroke);
+      border-radius:999px; padding:10px 14px;
+      box-shadow: var(--shadow);
     }
-    nav a:hover{ opacity:.8; }
 
+    /* Sol: Logo kapsülü */
+    .brand{
+      display:flex; align-items:center; gap:10px; padding:8px 12px; border-radius:999px;
+      background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.06);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.06);
+    }
+    .brand img{ height:28px; width:auto; display:block; }
+    .brand span{ font-weight:700; letter-spacing:.3px; font-size:14px; opacity:.95 }
+
+    /* Orta: linkler – iki yana eşit yayılır gibi dursun */
+    .links{
+      display:flex; align-items:center; gap:10px; flex:1; justify-content:center;
+      flex-wrap:wrap;
+    }
+    .nav-btn{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:10px 14px; border-radius:999px; font-weight:600; font-size:14px;
+      color:var(--white); text-decoration:none; position:relative;
+      background:rgba(255,255,255,0.04);
+      border:1px solid rgba(255,255,255,0.08);
+      box-shadow: var(--pill-shadow);
+      transition: transform .18s ease, box-shadow .25s ease, background .25s ease, border-color .25s ease;
+    }
+    .nav-btn:hover{
+      transform: translateY(-1px);
+      background: linear-gradient(90deg, rgba(255,45,117,.16), rgba(164,69,201,.16), rgba(45,159,255,.16));
+      border-color: rgba(255,255,255,0.18);
+      box-shadow: 0 10px 26px rgba(164,69,201,.35), 0 4px 14px rgba(45,159,255,.28);
+    }
+    .nav-btn .dot{
+      width:8px; height:8px; border-radius:50%;
+      background: linear-gradient(90deg,var(--pink),var(--purple),var(--blue));
+      box-shadow: 0 0 8px rgba(164,69,201,.8);
+    }
+
+    /* Sağ: Hamburger */
+    .hamburger{
+      display:none; width:44px; height:44px; border:0; background:rgba(255,255,255,0.06);
+      border:1px solid rgba(255,255,255,0.1); border-radius:50%; cursor:pointer;
+      position:relative;
+    }
+    .hamburger span{
+      position:absolute; left:11px; right:11px; height:2px; background:var(--white);
+      transition: transform .25s ease, opacity .2s ease, top .25s ease;
+    }
+    .hamburger span:nth-child(1){ top:14px }
+    .hamburger span:nth-child(2){ top:21px }
+    .hamburger span:nth-child(3){ top:28px }
+    .hamburger.is-active span:nth-child(1){ top:21px; transform:rotate(45deg) }
+    .hamburger.is-active span:nth-child(2){ opacity:0 }
+    .hamburger.is-active span:nth-child(3){ top:21px; transform:rotate(-45deg) }
+
+    /* Mobil açılır menü (pill-nav’ın altında) */
+    .mobile-drawer{
+      display:none; overflow:hidden;
+      max-width:1100px; margin:8px auto 0;
+      background: rgba(255,255,255,.06); backdrop-filter: blur(12px);
+      border:1px solid rgba(255,255,255,.12); border-radius:20px;
+      box-shadow: var(--shadow);
+      animation: drop .25s ease forwards;
+    }
+    .mobile-drawer a{
+      display:flex; align-items:center; gap:10px; padding:14px 16px;
+      color:var(--white); text-decoration:none; font-weight:600; border-top:1px solid rgba(255,255,255,.06);
+    }
+    .mobile-drawer a:first-child{ border-top:none }
+    .mobile-drawer a:hover{
+      background: linear-gradient(90deg, rgba(255,45,117,.12), rgba(164,69,201,.12), rgba(45,159,255,.12));
+    }
+    @keyframes drop{ from{opacity:0; transform:translateY(-8px)} to{opacity:1; transform:none} }
+
+    /* 📱 Responsive */
+    @media (max-width: 980px){
+      .links{ display:none }
+      .hamburger{ display:inline-block }
+      .brand span{ display:none } /* logonun yanında yazı kalabalığı olmasın */
+    }
+
+    /* 🎯 HERO (video kutusu) */
     .hero{
-      text-align:center; padding:40px 20px 100px;
-      background:linear-gradient(135deg, rgba(255,45,117,.08), rgba(164,69,201,.08), rgba(45,159,255,.08));
-      border-radius:20px; margin:50px auto; max-width:1000px;
-      box-shadow:0 0 40px rgba(45,159,255,.08);
+      text-align:center;
+      padding: 46px 20px 80px;
+      max-width:1000px; margin: 32px auto 60px;
+      background: linear-gradient(135deg, rgba(255,45,117,0.08), rgba(164,69,201,0.08), rgba(45,159,255,0.08));
+      border-radius:20px; box-shadow:0 0 40px rgba(45,159,255,0.08);
     }
     .hero h2{
-      font-size:34px; margin:0 0 18px;
+      margin:0 0 18px; font-size:34px;
       background:linear-gradient(90deg,var(--pink),var(--purple),var(--blue));
       -webkit-background-clip:text; -webkit-text-fill-color:transparent;
     }
-
     .hero-video{
-      position:relative; width:100%; max-width:960px; margin:0 auto;
-      aspect-ratio:16/9; background:#0a0f1c; border-radius:16px; overflow:hidden;
-      box-shadow:0 0 24px rgba(45,159,255,.12);
+      position:relative; width:100%; max-width:960px; margin:0 auto; aspect-ratio:16/9;
+      background:var(--bg); border-radius:16px; overflow:hidden;
+      box-shadow:0 0 24px rgba(45,159,255,0.12);
     }
-    .hero-video video{
-      width:100%; height:100%; object-fit:contain; object-position:center; display:block; background:#0a0f1c;
-    }
-    .hero-video::after{
-      content:""; position:absolute; inset:0;
-      background:radial-gradient(ellipse at center, rgba(10,15,28,0) 60%, rgba(10,15,28,.9) 120%);
-      pointer-events:none;
+    .hero-video video{ width:100%; height:100%; object-fit:contain; background:var(--bg); display:block; }
+    .hero-video::after{ content:""; position:absolute; inset:0; pointer-events:none;
+      background: radial-gradient(ellipse at center, rgba(10,15,28,0) 60%, rgba(10,15,28,0.9) 120%);
     }
 
-    footer{ background:#000; text-align:center; padding:20px; color:#b0b8c5; margin-top:auto; }
+    footer{ background:#000; text-align:center; padding:20px; color:#b0b8c5; }
 
-    @media (max-width:768px){
-      nav a{ margin:0 10px; font-size:14px; }
-      .hero{ padding:32px 16px 80px; margin:36px auto; }
-      .hero h2{ font-size:26px; }
-    }
-    @media (max-width:480px){
-      nav a{ margin:0 8px; font-size:13px; }
-      .hero h2{ font-size:22px; }
+    @media (max-width:720px){
+      .hero{ padding:32px 16px 64px; margin:24px auto 48px }
+      .hero h2{ font-size:26px }
     }
   </style>
 </head>
 <body>
 
-  <!-- 🖼️ BANNER -->
-  <figure class="top-banner">
-    <img src="home-banner.jpg" alt="Lumina Travel destinations banner">
-  </figure>
+  <!-- 🖼️ Banner (kırpmasız) -->
+  <div class="top-banner">
+    <!-- Orijinal index’te kullandığın banner dosyası -->
+    <img src="home-banner.jpg" alt="Lumina Travel Banner">
+  </div>
 
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="about.html">About us</a>
-    <a href="services.html">Our services</a>
-    <a href="packages.html">Tour Packages</a>
-    <a href="contact.html">Contact</a>
-  </nav>
+  <!-- 🌟 Floating Pill Cam Menü (bannerın ALTINDA, sticky) -->
+  <header class="nav-wrap">
+    <div class="pill-nav">
+      <a class="brand" href="index.html" aria-label="Lumina Travel">
+        <img src="logo.png" alt="Lumina Logo"><span>Lumina Travel</span>
+      </a>
 
+      <nav class="links" aria-label="Primary">
+        <a class="nav-btn" href="index.html"><span class="dot"></span>Home</a>
+        <a class="nav-btn" href="about.html"><span class="dot"></span>About us</a>
+        <a class="nav-btn" href="services.html"><span class="dot"></span>Our services</a>
+        <a class="nav-btn" href="packages.html"><span class="dot"></span>Tour Packages</a>
+        <a class="nav-btn" href="contact.html"><span class="dot"></span>Contact</a>
+      </nav>
+
+      <button class="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="drawer">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <!-- Mobil açılır menü -->
+    <div id="drawer" class="mobile-drawer" aria-hidden="true">
+      <a href="index.html">• Home</a>
+      <a href="about.html">• About us</a>
+      <a href="services.html">• Our services</a>
+      <a href="packages.html">• Tour Packages</a>
+      <a href="contact.html">• Contact</a>
+    </div>
+  </header>
+
+  <!-- 🎯 Hero (Video) -->
   <section class="hero">
     <h2>Your next adventure starts here!</h2>
     <div class="hero-video" id="hv">
@@ -109,9 +210,24 @@
   <footer>© 2025 Lumina Travel. All Rights Reserved.</footer>
 
   <script>
-    const v=document.getElementById('hvSrc'); const wrap=document.getElementById('hv');
-    v.addEventListener('loadedmetadata',()=>{ if(v.videoWidth && v.videoHeight){ wrap.style.aspectRatio=(v.videoWidth/v.videoHeight).toString(); }});
-  </script>
+    // Mobil hamburger
+    const burger = document.querySelector('.hamburger');
+    const drawer = document.getElementById('drawer');
+    burger.addEventListener('click', () => {
+      const open = burger.classList.toggle('is-active');
+      drawer.style.display = open ? 'block' : 'none';
+      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      drawer.setAttribute('aria-hidden', open ? 'false' : 'true');
+    });
 
+    // Video oranını gerçek dosyaya göre ayarla (opsiyonel)
+    const v = document.getElementById('hvSrc');
+    const wrap = document.getElementById('hv');
+    v.addEventListener('loadedmetadata', () => {
+      if (v.videoWidth && v.videoHeight) {
+        wrap.style.aspectRatio = (v.videoWidth / v.videoHeight).toString();
+      }
+    });
+  </script>
 </body>
 </html>
