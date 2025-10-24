@@ -1,117 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hotel & Flight Reservations - Lumina Travel</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    body { 
-      background:#0a0f1c; 
-      color:white; 
-      font-family:'Poppins',sans-serif; 
-      margin:0; 
-    }
+    * { box-sizing: border-box; }
+    body { background:#0a0f1c; color:#fff; font-family:'Poppins',sans-serif; margin:0; }
 
-    /* 🖼️ Banner */
+    /* 🖼️ KIRPMASIZ BANNER (img ile, oran korunur) */
     .hero {
       position: relative;
-      height: 380px;
-      background: url("servicesbanner.jpeg") center/cover no-repeat;
+      background:#0a0f1c;          /* sayfa rengi, resmin etrafı aynı ton */
+      overflow: hidden;            /* taşma yok */
     }
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(rgba(10,15,28,0.6), rgba(10,15,28,0.4));
-      z-index: 1;
+    .hero .banner-img {
+      display:block;
+      width:100%;
+      height:auto;                 /* oran korunur, kırpma olmaz */
     }
-
-    /* ✅ Menü - Bannerın ALTINDA */
-    nav {
-      background: linear-gradient(90deg,#ff2d75,#a445c9,#2d9fff);
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 10px 14px;
-      padding: 12px 10px;
-      position: relative;
-      z-index: 2;
+    /* Yumuşak üst-alt karartma (istemezsen bu bloğu silebilirsin) */
+    .hero::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(rgba(10,15,28,.55), rgba(10,15,28,.25));
+      pointer-events:none;
     }
 
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 16px;
-      padding: 6px 10px;
-      border-radius: 8px;
-      white-space: nowrap;
-      transition: opacity 0.2s;
+    /* ✅ Menü – bannerın ALTINDA ve responsive */
+    nav{
+      background:linear-gradient(90deg,#ff2d75,#a445c9,#2d9fff);
+      display:flex; flex-wrap:wrap; justify-content:center;
+      gap:10px 14px; padding:12px 10px; position:relative; z-index:2;
     }
-
-    nav a:hover {
-      text-decoration: underline;
-      opacity: 0.9;
+    nav a{
+      color:#fff; text-decoration:none; font-weight:600; font-size:16px;
+      padding:6px 10px; border-radius:8px; white-space:nowrap; transition:opacity .2s;
     }
-
-    /* 📱 Mobil uyum */
-    @media (max-width: 600px) {
-      .hero { height: 300px; }
-      nav a { font-size: 14px; padding: 6px 8px; }
-      nav { gap: 8px 10px; padding: 10px 8px; }
-    }
+    nav a:hover{ text-decoration:underline; opacity:.9; }
 
     /* 📄 İçerik */
-    section { 
-      max-width: 900px; 
-      margin: auto; 
-      padding: 60px 20px; 
-      text-align: center; 
+    section{ max-width:900px; margin:auto; padding:60px 20px; text-align:center; }
+    h2{
+      font-size:32px;
+      background:linear-gradient(90deg,#ff2d75,#a445c9,#2d9fff);
+      -webkit-background-clip:text; -webkit-text-fill-color:transparent;
     }
+    p{ font-size:18px; color:#d0d6e0; line-height:1.6; max-width:700px; margin:20px auto; }
 
-    h2 {
-      font-size: 32px;
-      background: linear-gradient(90deg,#ff2d75,#a445c9,#2d9fff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
+    footer{ background:#000; text-align:center; padding:20px; color:#b0b8c5; }
+    footer a{ color:#ff2d75; text-decoration:none; }
 
-    p {
-      font-size: 18px;
-      color: #d0d6e0;
-      line-height: 1.6;
-      max-width: 700px;
-      margin: 20px auto;
-    }
-
-    footer {
-      background: #000;
-      text-align: center;
-      padding: 20px;
-      color: #b0b8c5;
-    }
-
-    footer a {
-      color: #ff2d75;
-      text-decoration: none;
+    /* 📱 Mobil iyileştirmeler */
+    @media (max-width:600px){
+      nav{ gap:8px 10px; padding:10px 8px; }
+      nav a{ font-size:14px; padding:6px 8px; }
+      section{ padding:40px 16px; }
+      h2{ font-size:28px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- 🖼️ Banner -->
-  <div class="hero"></div>
+  <!-- 🖼️ BANNER (kırpmasız) -->
+  <div class="hero">
+    <img class="banner-img" src="servicesbanner.jpeg" alt="Hotels and Flights — Lumina Travel">
+  </div>
 
-  <!-- ✅ Menü (bannerın altında) -->
+  <!-- ✅ MENÜ (bannerın altında + Tour Packages eklendi) -->
   <nav>
     <a href="index.html">Home</a>
     <a href="about.html">About us</a>
     <a href="services.html">Our services</a>
+    <a href="packages.html">Tour Packages</a>
     <a href="contact.html">Contact</a>
   </nav>
 
-  <!-- 📄 İçerik -->
+  <!-- 📄 İÇERİK -->
   <section>
     <h2>Hotel & Flight Reservations</h2>
     <p>Lumina Travel simplifies all your travel arrangements.</p>
@@ -121,10 +88,6 @@
     <a href="services.html" style="color:#ff2d75;text-decoration:none;font-weight:600;">← Back to Services</a>
   </section>
 
-  <!-- Footer -->
-  <footer>
-    © 2025 Lumina Travel. All Rights Reserved.
-  </footer>
-
+  <footer>© 2025 Lumina Travel. All Rights Reserved.</footer>
 </body>
 </html>
