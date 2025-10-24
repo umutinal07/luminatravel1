@@ -1,45 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>VIP Transfers & Guide Service - Lumina Travel</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    body { background:#0a0f1c; color:white; font-family:'Poppins',sans-serif; margin:0; }
-    nav { background:linear-gradient(90deg,#ff2d75,#a445c9,#2d9fff); text-align:center; padding:12px 0; }
-    nav a { color:white; text-decoration:none; margin:0 20px; font-weight:600; font-size:16px; }
-    nav a:hover { text-decoration:underline; }
-    section { max-width:900px; margin:auto; padding:60px 20px; text-align:center; }
-    h2 { font-size:32px; background:linear-gradient(90deg,#ff2d75,#a445c9,#2d9fff); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
-    p { font-size:18px; color:#d0d6e0; line-height:1.6; max-width:700px; margin:20px auto; }
-    footer { background:#000; text-align:center; padding:20px; color:#b0b8c5; }
-    footer a { color:#ff2d75; text-decoration:none; }
+    :root {
+      --pink:#ff2d75; --purple:#a445c9; --blue:#2d9fff;
+      --bg:#0a0f1c; --white:#fff; --muted:#b0b8c5;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--white); font-family: 'Poppins', sans-serif; }
+
+    /* 🖼️ Banner (ORJİNAL GÖRSEL — KIRPMASIZ) */
+    .banner-wrapper {
+      position: relative;
+      width: 100%;
+      background: var(--bg);
+      overflow: hidden;
+    }
+    .banner-wrapper img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .banner-wrapper::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(rgba(10,15,28,0.6), rgba(10,15,28,0.4));
+      pointer-events: none;
+    }
+
+    /* ✅ Menü (bannerın altında) */
+    nav {
+      background: linear-gradient(90deg,var(--pink),var(--purple),var(--blue));
+      text-align: center;
+      padding: 12px 0;
+      width: 100%;
+    }
+    nav a {
+      color: var(--white);
+      text-decoration: none;
+      margin: 0 20px;
+      font-weight: 600;
+      font-size: 16px;
+      transition: opacity .3s;
+      white-space: nowrap;
+    }
+    nav a:hover {
+      opacity: .85;
+      text-decoration: underline;
+    }
+
+    /* 📄 İçerik */
+    section {
+      max-width: 900px;
+      margin: auto;
+      padding: 60px 20px;
+      text-align: center;
+    }
+    h2 {
+      font-size: 32px;
+      background: linear-gradient(90deg,var(--pink),var(--purple),var(--blue));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 20px;
+    }
+    p {
+      font-size: 18px;
+      color: #d0d6e0;
+      line-height: 1.6;
+      max-width: 700px;
+      margin: 20px auto;
+    }
+
+    footer {
+      background: #000;
+      text-align: center;
+      padding: 20px;
+      color: var(--muted);
+    }
+
+    /* 📱 Mobil uyum */
+    @media (max-width: 600px) {
+      nav a { font-size: 14px; margin: 0 12px; }
+      h2 { font-size: 28px; }
+    }
   </style>
 </head>
 <body>
 
-<nav>
-  <a href="index.html">Home</a>
-  <a href="about.html">About us</a>
-  <a href="services.html">Our services</a>
-  <a href="contact.html">Contact</a>
-</nav>
+  <!-- 🖼️ Banner -->
+  <div class="banner-wrapper">
+    <img src="vipbanner.jpeg" alt="VIP Transfers & Guide Service Banner">
+  </div>
 
-<section>
-  <h2>VIP Transfers & Guide Service</h2>
-  <p>Travel in comfort and style with Lumina Travel’s premium transfer and guide services.<p> 
+  <!-- ✅ Menü -->
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About us</a>
+    <a href="services.html">Our services</a>
+    <a href="packages.html">Tour Packages</a>
+    <a href="contact.html">Contact</a>
+  </nav>
 
-  <p>From exclusive luxury vehicles and vetted, professional drivers to dedicated multilingual guides, we  ensure every step of your journey is seamless, smooth, and memorable.</p>
-  <p>🚘 Airport Pickups • Private Drivers • Personal Tour Guides</p>
-  <a href="services.html" style="color:#ff2d75;text-decoration:none;font-weight:600;">← Back to Services</a>
-</section>
+  <!-- 📄 İçerik -->
+  <section>
+    <h2>VIP Transfers & Guide Service</h2>
+    <p>Travel in comfort and style with Lumina Travel’s premium transfer and guide services.</p>
+    <p>From exclusive luxury vehicles and vetted, professional drivers to dedicated multilingual guides, we ensure every step of your journey is seamless, smooth, and memorable.</p>
+    <p>🚘 Airport Pickups • Private Drivers • Personal Tour Guides</p>
+    <a href="services.html" style="color:#ff2d75;text-decoration:none;font-weight:600;">← Back to Services</a>
+  </section>
 
-<footer>
-  © 2025 Lumina Travel. All Rights Reserved.
-</footer>
+  <!-- 📄 Footer -->
+  <footer>
+    © 2025 Lumina Travel. All Rights Reserved.
+  </footer>
 
 </body>
 </html>
-
-
