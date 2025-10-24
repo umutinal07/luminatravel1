@@ -9,21 +9,36 @@
     * { box-sizing: border-box; }
     body { background:#0a0f1c; color:#fff; font-family:'Poppins',sans-serif; margin:0; }
 
-    /* 🖼️ BANNER — DİĞER SAYFALARLA AYNI */
+    /* 🖼️ BANNER (KIRPMASIZ – ORİJİNAL ORAN) */
     .hero {
       position: relative;
-      height: 380px;
-      background: url("servicesbanner.jpeg") center/cover no-repeat;
+      width: 100%;
+      /* Masaüstünde ferah ama çok yüksek olmayan bir yükseklik */
+      height: clamp(220px, 42vw, 380px);
+      background: #0a0f1c;           /* sayfa zeminine uyum */
+      display: grid;
+      place-items: center;
+      overflow: hidden;              /* taşma yok */
     }
+    .hero img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;           /* 👈 kırpma yok, orijinal oran */
+      object-position: center center;
+      display: block;
+      background:#0a0f1c;
+    }
+    /* Üstte hafif karartma (diğer sayfalarla aynı) */
     .hero::before {
       content: "";
       position: absolute;
       inset: 0;
       background: linear-gradient(rgba(10,15,28,0.6), rgba(10,15,28,0.4));
+      pointer-events: none;
       z-index: 1;
     }
 
-    /* ✅ Menü – bannerın ALTINDA */
+    /* ✅ Menü – bannerın ALTINDA (tüm sayfalarla aynı düzen) */
     nav {
       background: linear-gradient(90deg,#ff2d75,#a445c9,#2d9fff);
       display: flex;
@@ -44,10 +59,7 @@
       white-space: nowrap;
       transition: opacity 0.2s;
     }
-    nav a:hover {
-      text-decoration: underline;
-      opacity: 0.9;
-    }
+    nav a:hover { text-decoration: underline; opacity: 0.9; }
 
     /* 📄 İçerik */
     section {
@@ -76,25 +88,25 @@
       padding: 20px;
       color: #b0b8c5;
     }
-    footer a {
-      color: #ff2d75;
-      text-decoration: none;
-    }
+    footer a { color: #ff2d75; text-decoration: none; }
 
-    /* 📱 Mobil uyum */
+    /* 📱 Mobil uyum – banner yüksekliği ve menü metinleri küçülür */
     @media (max-width: 600px) {
-      .hero { height: 300px; }
-      nav a { font-size: 14px; padding: 6px 8px; }
+      .hero { height: clamp(180px, 52vw, 300px); }
       nav { gap: 8px 10px; padding: 10px 8px; }
+      nav a { font-size: 14px; padding: 6px 8px; }
+      h2 { font-size: 28px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- 🖼️ Banner (tüm sayfalarla aynı yapı) -->
-  <div class="hero"></div>
+  <!-- 🖼️ Banner (kırpmasız/oran korunarak) -->
+  <div class="hero">
+    <img src="servicesbanner.jpeg" alt="Hotel & Flight Reservations Banner">
+  </div>
 
-  <!-- ✅ Menü -->
+  <!-- ✅ Menü (bannerın altında, tutarlı stil) -->
   <nav>
     <a href="index.html">Home</a>
     <a href="about.html">About us</a>
@@ -117,3 +129,5 @@
 
 </body>
 </html>
+
+
