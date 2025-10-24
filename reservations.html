@@ -6,43 +6,125 @@
   <title>Hotel & Flight Reservations - Lumina Travel</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    body { background:#0a0f1c; color:white; font-family:'Poppins',sans-serif; margin:0; }
-    nav { background:linear-gradient(90deg,#ff2d75,#a445c9,#2d9fff); text-align:center; padding:12px 0; }
-    nav a { color:white; text-decoration:none; margin:0 20px; font-weight:600; font-size:16px; }
-    nav a:hover { text-decoration:underline; }
-    section { max-width:900px; margin:auto; padding:60px 20px; text-align:center; }
-    h2 { font-size:32px; background:linear-gradient(90deg,#ff2d75,#a445c9,#2d9fff); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
-    p { font-size:18px; color:#d0d6e0; line-height:1.6; max-width:700px; margin:20px auto; }
-    footer { background:#000; text-align:center; padding:20px; color:#b0b8c5; }
-    footer a { color:#ff2d75; text-decoration:none; }
+    body { 
+      background:#0a0f1c; 
+      color:white; 
+      font-family:'Poppins',sans-serif; 
+      margin:0; 
+    }
+
+    /* 🖼️ Banner */
+    .hero {
+      position: relative;
+      height: 380px;
+      background: url("servicesbanner.jpeg") center/cover no-repeat;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(rgba(10,15,28,0.6), rgba(10,15,28,0.4));
+      z-index: 1;
+    }
+
+    /* ✅ Menü - Bannerın ALTINDA */
+    nav {
+      background: linear-gradient(90deg,#ff2d75,#a445c9,#2d9fff);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px 14px;
+      padding: 12px 10px;
+      position: relative;
+      z-index: 2;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 16px;
+      padding: 6px 10px;
+      border-radius: 8px;
+      white-space: nowrap;
+      transition: opacity 0.2s;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+      opacity: 0.9;
+    }
+
+    /* 📱 Mobil uyum */
+    @media (max-width: 600px) {
+      .hero { height: 300px; }
+      nav a { font-size: 14px; padding: 6px 8px; }
+      nav { gap: 8px 10px; padding: 10px 8px; }
+    }
+
+    /* 📄 İçerik */
+    section { 
+      max-width: 900px; 
+      margin: auto; 
+      padding: 60px 20px; 
+      text-align: center; 
+    }
+
+    h2 {
+      font-size: 32px;
+      background: linear-gradient(90deg,#ff2d75,#a445c9,#2d9fff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    p {
+      font-size: 18px;
+      color: #d0d6e0;
+      line-height: 1.6;
+      max-width: 700px;
+      margin: 20px auto;
+    }
+
+    footer {
+      background: #000;
+      text-align: center;
+      padding: 20px;
+      color: #b0b8c5;
+    }
+
+    footer a {
+      color: #ff2d75;
+      text-decoration: none;
+    }
   </style>
 </head>
 <body>
 
-<nav>
-  <a href="index.html">Home</a>
-  <a href="about.html">About us</a>
-  <a href="services.html">Our services</a>
-  <a href="contact.html">Contact</a>
-</nav>
+  <!-- 🖼️ Banner -->
+  <div class="hero"></div>
 
-<section>
-  <h2>Hotel & Flight Reservations</h2>
-  
-  <p>Lumina Travel simplifies all your travel arrangements.<p> 
+  <!-- ✅ Menü (bannerın altında) -->
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About us</a>
+    <a href="services.html">Our services</a>
+    <a href="contact.html">Contact</a>
+  </nav>
 
-  <p>Beyond our custom tour packages, we offer seamless hotel and flight booking services—available separately or as part of your dream itinerary.<p>
+  <!-- 📄 İçerik -->
+  <section>
+    <h2>Hotel & Flight Reservations</h2>
+    <p>Lumina Travel simplifies all your travel arrangements.</p>
+    <p>Beyond our custom tour packages, we offer seamless hotel and flight booking services — available separately or as part of your dream itinerary.</p>
+    <p>From selecting luxury resorts to securing affordable international flights, Lumina ensures every detail of your journey is comfortable, affordable, and perfectly arranged.</p>
+    <p>🌍 24/7 Assistance • Flexible Options • Trusted Global Partners</p>
+    <a href="services.html" style="color:#ff2d75;text-decoration:none;font-weight:600;">← Back to Services</a>
+  </section>
 
-  <p>From selecting luxury resorts to securing affordable international flights, Lumina ensures every detail of your journey is comfortable, affordable, and perfectly arranged.<p>
-  <p>🌍 24/7 Assistance • Flexible Options • Trusted Global Partners</p>
-  <a href="services.html" style="color:#ff2d75;text-decoration:none;font-weight:600;">← Back to Services</a>
-</section>
-
-<footer>
-  © 2025 Lumina Travel. All Rights Reserved.
-</footer>
+  <!-- Footer -->
+  <footer>
+    © 2025 Lumina Travel. All Rights Reserved.
+  </footer>
 
 </body>
 </html>
-
-
