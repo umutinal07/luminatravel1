@@ -6,17 +6,123 @@
   <title>Europe Packages - Lumina Travel</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    body { background:#0a0f1c; color:white; font-family:'Poppins',sans-serif; margin:0; }
-    nav { background:linear-gradient(90deg,#ff2d75,#a445c9,#2d9fff); text-align:center; padding:12px 0; }
-    nav a { color:white; text-decoration:none; margin:0 20px; font-weight:600; }
-    section { max-width:900px; margin:auto; padding:60px 20px; text-align:center; }
-    h2 { font-size:32px; background:linear-gradient(90deg,#ff2d75,#a445c9,#2d9fff); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
-    p { font-size:18px; color:#d0d6e0; line-height:1.6; }
+    :root {
+      --pink: #ff2d75;
+      --purple: #a445c9;
+      --blue: #2d9fff;
+      --dark-bg: #0a0f1c;
+    }
+
+    body { background: var(--dark-bg); color:#fff; font-family:'Poppins',sans-serif; margin:0; }
+
+    /* 🖼️ HERO BANNER */
+    .hero {
+      position: relative;
+      width: 100%;
+      background: var(--dark-bg);
+      overflow: hidden;
+    }
+    .hero img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: contain;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(rgba(10,15,28,0.65), rgba(10,15,28,0.35));
+      pointer-events: none;
+    }
+    .hero-content {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      z-index: 1;
+      padding: 0 20px;
+    }
+    .hero h1 {
+      font-size: 40px;
+      margin: 0 0 10px;
+      background: linear-gradient(90deg,var(--pink),var(--purple),var(--blue));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero p {
+      color: #d0d6e0;
+      font-size: 18px;
+      margin: 0;
+      max-width: 900px;
+    }
+
+    /* 🌐 NAVBAR */
+    nav {
+      background: linear-gradient(90deg, var(--pink), var(--purple), var(--blue));
+      padding: 12px 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 14px;
+      justify-content: center;
+      position: relative;
+      z-index: 2;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 16px;
+      padding: 6px 10px;
+      border-radius: 8px;
+      white-space: nowrap;
+      transition: opacity .2s;
+    }
+    nav a:hover { text-decoration: underline; opacity: .9; }
+
+    /* 📄 SECTION */
+    section { max-width: 1000px; margin:auto; padding:60px 20px; text-align:center; }
+    h2 {
+      font-size:32px; margin-bottom:16px;
+      background:linear-gradient(90deg,var(--pink),var(--purple),var(--blue));
+      -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+    }
+    p { font-size:18px; color:#d0d6e0; line-height:1.6; max-width:800px; margin: 20px auto; }
+
+    .back-link { 
+      color: var(--pink); 
+      text-decoration: none; 
+      font-weight: 600; 
+      display: block; 
+      margin-top: 36px; 
+    }
+
     footer { background:#000; text-align:center; padding:20px; color:#b0b8c5; }
+
+    /* 📱 Responsive */
+    @media (max-width:768px){
+      nav { gap: 8px 10px; padding: 10px 8px; }
+      nav a { font-size: 14px; padding: 6px 8px; }
+      .hero h1 { font-size:30px; }
+      .hero p { font-size:15px; }
+    }
   </style>
 </head>
 <body>
 
+<!-- 🖼️ HERO -->
+<div class="hero">
+  <img src="europebanner.jpeg" alt="Europe Banner">
+  <div class="hero-content">
+    <h1>Explore Our Europe Tours</h1>
+    <p>From Paris to Rome and the Swiss Alps — curated itineraries to discover Europe’s most iconic cities and landscapes.</p>
+  </div>
+</div>
+
+<!-- 🌐 NAVBAR -->
 <nav>
   <a href="index.html">Home</a>
   <a href="about.html">About us</a>
@@ -25,11 +131,12 @@
   <a href="contact.html">Contact</a>
 </nav>
 
+<!-- 📄 MAIN CONTENT -->
 <section>
   <h2>Europe Packages</h2>
   <p>Travel through the heart of Europe — from the romantic streets of Paris to the ancient ruins of Rome and the stunning landscapes of Switzerland.</p>
   <p>✨ Multi-country tours • Family trips • Honeymoon packages</p>
-  <a href="packages.html" style="color:#ff2d75;text-decoration:none;font-weight:600;">← Back to Tour Packages</a>
+  <a class="back-link" href="packages.html">← Back to Tour Packages</a>
 </section>
 
 <footer>© 2025 Lumina Travel. All Rights Reserved.</footer>
