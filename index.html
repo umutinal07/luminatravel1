@@ -2,185 +2,93 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Lumina Travel</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    :root{
-      --bg:#0a0f1c;
-      --white:#fff;
-      --pink:#ff2d75;
-      --purple:#a445c9;
-      --blue:#2d9fff;
+    :root {
+      --dark-bg: radial-gradient(circle at 30% 20%, #0b1224, #060913 80%);
+      --pink: #ff2d75; --purple: #a445c9; --blue: #2d9fff;
+      --white: #ffffff; --gray: #b0b8c5;
     }
-    *{box-sizing:border-box;}
+    *{box-sizing:border-box}
     body{
-      margin:0;
-      font-family:'Poppins',sans-serif;
-      background:var(--bg);
-      color:var(--white);
+      margin:0; font-family:'Poppins',Arial,sans-serif;
+      background:var(--dark-bg); color:var(--white);
+      display:flex; flex-direction:column; min-height:100vh;
     }
 
-    /* 🖼️ Banner */
-    .top-banner{
-      position:relative;
-      width:100%;
-      overflow:hidden;
-      background:var(--bg);
-    }
+    /* 🖼️ BANNER — tam genişlik, kırpmasız, yan boşluk yok */
+    .top-banner{ position:relative; width:100%; margin:0; line-height:0; }
     .top-banner img{
-      width:100%;
-      height:auto;
       display:block;
-      object-fit:contain;
-      background:var(--bg);
+      width:100%;      /* ➜ her zaman soldan-sağa tam */
+      height:auto;     /* ➜ oran korunur, kırpma yok */
+      max-width:none;  /* olası global sınırlamaları iptal */
     }
     .top-banner::after{
-      content:"";
-      position:absolute; inset:0;
-      background:linear-gradient(rgba(10,15,28,.55), rgba(10,15,28,.25));
+      content:""; position:absolute; inset:0;
+      background:linear-gradient(rgba(10,15,28,.65), rgba(10,15,28,.35));
+      pointer-events:none;
     }
 
-    /* 🌟 Menü Bar - Tam Genişlik */
-    header{
-      position:sticky;
-      top:0;
-      z-index:50;
-      background:rgba(255,255,255,0.04);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-      box-shadow: 0 8px 24px rgba(0,0,0,.25);
-      display:flex;
-      justify-content: space-between;
-      align-items:center;
-      padding: 14px 24px;
+    nav{
+      background:linear-gradient(90deg,var(--pink),var(--purple),var(--blue));
+      text-align:center; padding:12px 0; width:100%;
+      margin:0; box-shadow:0 0 20px rgba(164,69,201,.4); z-index:10;
     }
+    nav a{
+      color:var(--white); text-decoration:none; margin:0 20px;
+      font-weight:600; font-size:16px; transition:opacity .3s; white-space:nowrap;
+    }
+    nav a:hover{ opacity:.8; }
 
-    /* Hamburger butonu */
-    .hamburger{
-      width:48px;
-      height:48px;
-      background:rgba(255,255,255,0.05);
-      border:1px solid rgba(255,255,255,0.15);
-      border-radius:50%;
-      cursor:pointer;
-      position:relative;
-      transition:background .25s;
-    }
-    .hamburger:hover{
-      background:linear-gradient(90deg, rgba(255,45,117,.16), rgba(164,69,201,.16), rgba(45,159,255,.16));
-    }
-    .hamburger span{
-      position:absolute;
-      left:12px;
-      right:12px;
-      height:2px;
-      background:var(--white);
-      transition: transform .25s ease, opacity .25s ease, top .25s ease;
-    }
-    .hamburger span:nth-child(1){ top:16px }
-    .hamburger span:nth-child(2){ top:23px }
-    .hamburger span:nth-child(3){ top:30px }
-    .hamburger.is-active span:nth-child(1){ top:23px; transform:rotate(45deg) }
-    .hamburger.is-active span:nth-child(2){ opacity:0 }
-    .hamburger.is-active span:nth-child(3){ top:23px; transform:rotate(-45deg) }
-
-    /* Açılır Menü */
-    .drawer{
-      display:none;
-      position:absolute;
-      top:100%;
-      left:0;
-      width:100%;
-      background:rgba(10,15,28,0.9);
-      backdrop-filter: blur(12px);
-      border-top:1px solid rgba(255,255,255,0.1);
-      box-shadow: 0 8px 24px rgba(0,0,0,.5);
-      animation:fadeIn .25s ease;
-    }
-    .drawer a{
-      display:block;
-      padding:16px 20px;
-      color:var(--white);
-      text-decoration:none;
-      font-weight:600;
-      border-bottom:1px solid rgba(255,255,255,0.08);
-      transition:background .25s;
-    }
-    .drawer a:hover{
-      background:linear-gradient(90deg, rgba(255,45,117,.12), rgba(164,69,201,.12), rgba(45,159,255,.12));
-    }
-    @keyframes fadeIn{
-      from{opacity:0; transform:translateY(-10px);}
-      to{opacity:1; transform:translateY(0);}
-    }
-
-    /* 🎯 Hero Bölümü */
     .hero{
-      text-align:center;
-      padding: 46px 20px 80px;
-      max-width:1000px;
-      margin: 32px auto 60px;
-      background: linear-gradient(135deg, rgba(255,45,117,0.08), rgba(164,69,201,0.08), rgba(45,159,255,0.08));
-      border-radius:20px;
-      box-shadow:0 0 40px rgba(45,159,255,0.08);
+      text-align:center; padding:40px 20px 100px;
+      background:linear-gradient(135deg, rgba(255,45,117,.08), rgba(164,69,201,.08), rgba(45,159,255,.08));
+      border-radius:20px; margin:50px auto; max-width:1000px;
+      box-shadow:0 0 40px rgba(45,159,255,.08);
     }
     .hero h2{
-      margin:0 0 18px;
-      font-size:34px;
+      font-size:34px; margin:0 0 18px;
       background:linear-gradient(90deg,var(--pink),var(--purple),var(--blue));
-      -webkit-background-clip:text;
-      -webkit-text-fill-color:transparent;
-    }
-    .hero-video{
-      position:relative;
-      width:100%;
-      max-width:960px;
-      margin:0 auto;
-      aspect-ratio:16/9;
-      background:var(--bg);
-      border-radius:16px;
-      overflow:hidden;
-      box-shadow:0 0 24px rgba(45,159,255,0.12);
-    }
-    .hero-video video{
-      width:100%;
-      height:100%;
-      object-fit:contain;
-      background:var(--bg);
-      display:block;
-    }
-    .hero-video::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      pointer-events:none;
-      background: radial-gradient(ellipse at center, rgba(10,15,28,0) 60%, rgba(10,15,28,0.9) 120%);
+      -webkit-background-clip:text; -webkit-text-fill-color:transparent;
     }
 
-    footer{
-      background:#000;
-      text-align:center;
-      padding:20px;
-      color:#b0b8c5;
+    .hero-video{
+      position:relative; width:100%; max-width:960px; margin:0 auto;
+      aspect-ratio:16/9; background:#0a0f1c; border-radius:16px; overflow:hidden;
+      box-shadow:0 0 24px rgba(45,159,255,.12);
+    }
+    .hero-video video{
+      width:100%; height:100%; object-fit:contain; object-position:center; display:block; background:#0a0f1c;
+    }
+    .hero-video::after{
+      content:""; position:absolute; inset:0;
+      background:radial-gradient(ellipse at center, rgba(10,15,28,0) 60%, rgba(10,15,28,.9) 120%);
+      pointer-events:none;
+    }
+
+    footer{ background:#000; text-align:center; padding:20px; color:#b0b8c5; margin-top:auto; }
+
+    @media (max-width:768px){
+      nav a{ margin:0 10px; font-size:14px; }
+      .hero{ padding:32px 16px 80px; margin:36px auto; }
+      .hero h2{ font-size:26px; }
+    }
+    @media (max-width:480px){
+      nav a{ margin:0 8px; font-size:13px; }
+      .hero h2{ font-size:22px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Banner -->
-  <div class="top-banner">
-    <img src="home-banner.jpg" alt="Lumina Travel Banner">
-  </div>
+  <!-- 🖼️ BANNER -->
+  <figure class="top-banner">
+    <img src="home-banner.jpg" alt="Lumina Travel destinations banner">
+  </figure>
 
-  <!-- Modern hamburger menü -->
-  <header>
-    <button class="hamburger" aria-label="Menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-  </header>
-
-  <nav class="drawer" id="drawer">
+  <nav>
     <a href="index.html">Home</a>
     <a href="about.html">About us</a>
     <a href="services.html">Our services</a>
@@ -188,7 +96,6 @@
     <a href="contact.html">Contact</a>
   </nav>
 
-  <!-- Hero -->
   <section class="hero">
     <h2>Your next adventure starts here!</h2>
     <div class="hero-video" id="hv">
@@ -199,28 +106,12 @@
     </div>
   </section>
 
-  <footer>
-    © 2025 Lumina Travel. All Rights Reserved.
-  </footer>
+  <footer>© 2025 Lumina Travel. All Rights Reserved.</footer>
 
   <script>
-    const burger = document.querySelector('.hamburger');
-    const drawer = document.getElementById('drawer');
-
-    burger.addEventListener('click', () => {
-      const open = burger.classList.toggle('is-active');
-      drawer.style.display = open ? 'block' : 'none';
-      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
-    });
-
-    // Video oranı
-    const v = document.getElementById('hvSrc');
-    const wrap = document.getElementById('hv');
-    v.addEventListener('loadedmetadata', () => {
-      if (v.videoWidth && v.videoHeight) {
-        wrap.style.aspectRatio = (v.videoWidth / v.videoHeight).toString();
-      }
-    });
+    const v=document.getElementById('hvSrc'); const wrap=document.getElementById('hv');
+    v.addEventListener('loadedmetadata',()=>{ if(v.videoWidth && v.videoHeight){ wrap.style.aspectRatio=(v.videoWidth/v.videoHeight).toString(); }});
   </script>
+
 </body>
 </html>
