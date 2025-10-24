@@ -6,107 +6,74 @@
   <title>Hotel & Flight Reservations - Lumina Travel</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    * { box-sizing: border-box; }
-    body { background:#0a0f1c; color:#fff; font-family:'Poppins',sans-serif; margin:0; }
+    :root{
+      --pink:#ff2d75; --purple:#a445c9; --blue:#2d9fff;
+      --bg:#0a0f1c; --white:#fff; --muted:#b0b8c5;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:#0a0f1c;color:#fff;font-family:'Poppins',sans-serif}
 
-    /* 🖼️ BANNER (KIRPMASIZ – ORİJİNAL ORAN) */
-    .hero {
-      position: relative;
-      width: 100%;
-      /* Masaüstünde ferah ama çok yüksek olmayan bir yükseklik */
-      height: clamp(220px, 42vw, 380px);
-      background: #0a0f1c;           /* sayfa zeminine uyum */
-      display: grid;
-      place-items: center;
-      overflow: hidden;              /* taşma yok */
+    /* ✅ INDEX İLE AYNI BANNER YAPISI */
+    .top-banner{
+      position:relative;
+      width:100%;
+      height:360px;                 /* index’tekiyle aynı */
+      background:url("servicesbanner.jpeg") center/cover no-repeat;
     }
-    .hero img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;           /* 👈 kırpma yok, orijinal oran */
-      object-position: center center;
-      display: block;
-      background:#0a0f1c;
-    }
-    /* Üstte hafif karartma (diğer sayfalarla aynı) */
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(rgba(10,15,28,0.6), rgba(10,15,28,0.4));
-      pointer-events: none;
-      z-index: 1;
+    .top-banner::after{
+      content:"";
+      position:absolute; inset:0;
+      /* index’teki gradient yoğunlukları */
+      background:linear-gradient(rgba(10,15,28,0.65), rgba(10,15,28,0.35));
+      pointer-events:none;
     }
 
-    /* ✅ Menü – bannerın ALTINDA (tüm sayfalarla aynı düzen) */
-    nav {
-      background: linear-gradient(90deg,#ff2d75,#a445c9,#2d9fff);
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 10px 14px;
-      padding: 12px 10px;
-      position: relative;
-      z-index: 2;
+    /* ✅ NAV – bannerın ALTINDA (index ile aynı görünüm) */
+    nav{
+      background:linear-gradient(90deg,var(--pink),var(--purple),var(--blue));
+      text-align:center;
+      padding:12px 0;
+      width:100%;
+      margin:0;
+      box-shadow:0 0 20px rgba(164,69,201,0.4);
+      position:relative; z-index:2;
     }
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 16px;
-      padding: 6px 10px;
-      border-radius: 8px;
-      white-space: nowrap;
-      transition: opacity 0.2s;
+    nav a{
+      color:var(--white); text-decoration:none;
+      margin:0 20px; font-weight:600; font-size:16px;
+      transition:opacity .3s;
+      white-space:nowrap;
     }
-    nav a:hover { text-decoration: underline; opacity: 0.9; }
+    nav a:hover{opacity:.85; text-decoration:underline}
 
     /* 📄 İçerik */
-    section {
-      max-width: 900px;
-      margin: auto;
-      padding: 60px 20px;
-      text-align: center;
+    section{max-width:900px;margin:auto;padding:60px 20px;text-align:center}
+    h2{
+      font-size:32px;margin:0 0 18px;
+      background:linear-gradient(90deg,var(--pink),var(--purple),var(--blue));
+      -webkit-background-clip:text; -webkit-text-fill-color:transparent;
     }
-    h2 {
-      font-size: 32px;
-      background: linear-gradient(90deg,#ff2d75,#a445c9,#2d9fff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    p {
-      font-size: 18px;
-      color: #d0d6e0;
-      line-height: 1.6;
-      max-width: 700px;
-      margin: 20px auto;
-    }
+    p{font-size:18px;color:#d0d6e0;line-height:1.6;max-width:700px;margin:20px auto}
 
-    footer {
-      background: #000;
-      text-align: center;
-      padding: 20px;
-      color: #b0b8c5;
-    }
-    footer a { color: #ff2d75; text-decoration: none; }
+    footer{background:#000;text-align:center;padding:20px;color:var(--muted)}
 
-    /* 📱 Mobil uyum – banner yüksekliği ve menü metinleri küçülür */
-    @media (max-width: 600px) {
-      .hero { height: clamp(180px, 52vw, 300px); }
-      nav { gap: 8px 10px; padding: 10px 8px; }
-      nav a { font-size: 14px; padding: 6px 8px; }
-      h2 { font-size: 28px; }
+    /* 📱 INDEX’TEKİ MOBİL AYARLARI */
+    @media (max-width:768px){
+      .top-banner{height:280px}
+      nav a{font-size:14px;margin:0 12px}
+    }
+    @media (max-width:480px){
+      .top-banner{height:220px}
+      nav a{margin:0 10px}
     }
   </style>
 </head>
 <body>
 
-  <!-- 🖼️ Banner (kırpmasız/oran korunarak) -->
-  <div class="hero">
-    <img src="servicesbanner.jpeg" alt="Hotel & Flight Reservations Banner">
-  </div>
+  <!-- 🖼️ INDEX İLE AYNI BANNER BLOĞU -->
+  <div class="top-banner"></div>
 
-  <!-- ✅ Menü (bannerın altında, tutarlı stil) -->
+  <!-- 🧭 NAV (bannerın ALTINDA) -->
   <nav>
     <a href="index.html">Home</a>
     <a href="about.html">About us</a>
@@ -129,5 +96,3 @@
 
 </body>
 </html>
-
-
