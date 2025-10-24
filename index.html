@@ -4,90 +4,140 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Lumina Travel</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --dark-bg: radial-gradient(circle at 30% 20%, #0b1224, #060913 80%);
-      --pink: #ff2d75; --purple: #a445c9; --blue: #2d9fff;
-      --white: #ffffff; --gray: #b0b8c5;
-    }
-    *{box-sizing:border-box}
-    body{
-      margin:0; font-family:'Poppins',Arial,sans-serif;
-      background:var(--dark-bg); color:var(--white);
-      display:flex; flex-direction:column; min-height:100vh;
+      --pink: #ff2d75;
+      --purple: #a445c9;
+      --blue: #2d9fff;
+      --white: #ffffff;
+      --dark-bg: #0a0f1c;
     }
 
-    /* 🖼️ BANNER — tam genişlik, kırpmasız, yan boşluk yok */
-    .top-banner{ position:relative; width:100%; margin:0; line-height:0; }
-    .top-banner img{
-      display:block;
-      width:100%;      /* ➜ her zaman soldan-sağa tam */
-      height:auto;     /* ➜ oran korunur, kırpma yok */
-      max-width:none;  /* olası global sınırlamaları iptal */
-    }
-    .top-banner::after{
-      content:""; position:absolute; inset:0;
-      background:linear-gradient(rgba(10,15,28,.65), rgba(10,15,28,.35));
-      pointer-events:none;
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: var(--dark-bg);
+      color: var(--white);
+      padding-top: 70px; /* menü sabit olduğu için içerik altta başlar */
     }
 
-    nav{
-      background:linear-gradient(90deg,var(--pink),var(--purple),var(--blue));
-      text-align:center; padding:12px 0; width:100%;
-      margin:0; box-shadow:0 0 20px rgba(164,69,201,.4); z-index:10;
-    }
-    nav a{
-      color:var(--white); text-decoration:none; margin:0 20px;
-      font-weight:600; font-size:16px; transition:opacity .3s; white-space:nowrap;
-    }
-    nav a:hover{ opacity:.8; }
-
-    .hero{
-      text-align:center; padding:40px 20px 100px;
-      background:linear-gradient(135deg, rgba(255,45,117,.08), rgba(164,69,201,.08), rgba(45,159,255,.08));
-      border-radius:20px; margin:50px auto; max-width:1000px;
-      box-shadow:0 0 40px rgba(45,159,255,.08);
-    }
-    .hero h2{
-      font-size:34px; margin:0 0 18px;
-      background:linear-gradient(90deg,var(--pink),var(--purple),var(--blue));
-      -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+    /* 🌟 Cam Menü (Glassmorphism Navbar) */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      padding: 15px 0;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      z-index: 999;
     }
 
-    .hero-video{
-      position:relative; width:100%; max-width:960px; margin:0 auto;
-      aspect-ratio:16/9; background:#0a0f1c; border-radius:16px; overflow:hidden;
-      box-shadow:0 0 24px rgba(45,159,255,.12);
-    }
-    .hero-video video{
-      width:100%; height:100%; object-fit:contain; object-position:center; display:block; background:#0a0f1c;
-    }
-    .hero-video::after{
-      content:""; position:absolute; inset:0;
-      background:radial-gradient(ellipse at center, rgba(10,15,28,0) 60%, rgba(10,15,28,.9) 120%);
-      pointer-events:none;
+    nav a {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 16px;
+      position: relative;
+      padding: 5px 0;
+      transition: color 0.3s ease;
     }
 
-    footer{ background:#000; text-align:center; padding:20px; color:#b0b8c5; margin-top:auto; }
-
-    @media (max-width:768px){
-      nav a{ margin:0 10px; font-size:14px; }
-      .hero{ padding:32px 16px 80px; margin:36px auto; }
-      .hero h2{ font-size:26px; }
+    nav a::after {
+      content: "";
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--pink), var(--purple), var(--blue));
+      transition: width 0.3s ease;
     }
-    @media (max-width:480px){
-      nav a{ margin:0 8px; font-size:13px; }
-      .hero h2{ font-size:22px; }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    /* 🖼️ Hero Banner */
+    .top-banner {
+      position: relative;
+      width: 100%;
+      height: 400px;
+      background: url("home-banner.jpg") center/cover no-repeat;
+    }
+
+    .top-banner::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(rgba(10,15,28,0.65), rgba(10,15,28,0.35));
+      pointer-events: none;
+    }
+
+    /* 📌 Hero Content */
+    .hero {
+      text-align: center;
+      padding: 60px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .hero h2 {
+      font-size: 34px;
+      background: linear-gradient(90deg, var(--pink), var(--purple), var(--blue));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 20px;
+    }
+
+    .hero-video {
+      position: relative;
+      width: 100%;
+      max-width: 960px;
+      margin: 0 auto;
+      aspect-ratio: 16 / 9;
+      background: #0a0f1c;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 0 24px rgba(45,159,255,0.12);
+    }
+
+    .hero-video video {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: #0a0f1c;
+    }
+
+    footer {
+      background: #000;
+      text-align: center;
+      padding: 20px;
+      color: #b0b8c5;
+    }
+
+    /* 📱 Responsive */
+    @media (max-width: 768px) {
+      nav { gap: 15px; padding: 12px 0; }
+      nav a { font-size: 14px; }
+      .top-banner { height: 280px; }
+      .hero h2 { font-size: 26px; }
+    }
+    @media (max-width: 480px) {
+      nav { flex-wrap: wrap; gap: 10px; }
+      nav a { font-size: 14px; }
+      .top-banner { height: 220px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- 🖼️ BANNER -->
-  <figure class="top-banner">
-    <img src="home-banner.jpg" alt="Lumina Travel destinations banner">
-  </figure>
-
+  <!-- 🧭 Yeni Modern Menü -->
   <nav>
     <a href="index.html">Home</a>
     <a href="about.html">About us</a>
@@ -96,6 +146,10 @@
     <a href="contact.html">Contact</a>
   </nav>
 
+  <!-- 🖼️ Banner -->
+  <div class="top-banner"></div>
+
+  <!-- 🧳 Hero -->
   <section class="hero">
     <h2>Your next adventure starts here!</h2>
     <div class="hero-video" id="hv">
@@ -106,12 +160,20 @@
     </div>
   </section>
 
-  <footer>© 2025 Lumina Travel. All Rights Reserved.</footer>
+  <footer>
+    © 2025 Lumina Travel. All Rights Reserved.
+  </footer>
 
   <script>
-    const v=document.getElementById('hvSrc'); const wrap=document.getElementById('hv');
-    v.addEventListener('loadedmetadata',()=>{ if(v.videoWidth && v.videoHeight){ wrap.style.aspectRatio=(v.videoWidth/v.videoHeight).toString(); }});
+    const v = document.getElementById('hvSrc');
+    const wrap = document.getElementById('hv');
+    v.addEventListener('loadedmetadata', () => {
+      if (v.videoWidth && v.videoHeight) {
+        wrap.style.aspectRatio = (v.videoWidth / v.videoHeight).toString();
+      }
+    });
   </script>
 
 </body>
 </html>
+
